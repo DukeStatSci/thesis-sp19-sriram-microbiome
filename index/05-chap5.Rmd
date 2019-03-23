@@ -1,0 +1,84 @@
+# Chapter 5. Phylogenetic Tree Decomposition
+There are several aspects of microbiome data that make statistical analysis difficult. Potential issues include high dimensionality with large numbers of OTUs, sparsity due to small OTU counts, and potential correlations among counts of different OTUs. These aspects can cause problems when attempting to perform inference on the abundances of taxonomic units. Furthermore, simply analyzing regression results for a single OTU at a time fails to take into account the dependencies between different bacterial populations in the gut.
+
+To address these concerns, we applied a Phylogenetic Tree Decomposition to our microbiome data. This methodology replicates concepts introduced in PhyloScan (Tang 2018) and DTM (Wang 2017). Using a phylogenetic tree can summarize the evolutionary relationships amongst the OTUs, allowing us to have a better context of their functional relationships and enriching the overall model fitting process.
+
+With our completed filtration of our samples, we constructed a phylogenetic tree to represent the relations between our samples. We used the DECIPHER package in R to first perform multiple-alignment on the sequences in our ASV sequence table (Wright 2016). We then used the R package "phangorn" to fit a UPGMA tree based upon our sequences (Schliep 2018).
+
+Our full tree was a binary tree with a single root node. There were a total of 11048 leaf nodes, and 11047 internal nodes. Our filtered ASV table has a total of 462 rows, each corresponding to a distinct sample. Each column in our ASV table represents a leaf in the phylogenetic tree. With these initial abundances for a given sample, we propagated our way up through the phylogenetic tree, determining the counts going left and right at each of our 11047 internal node. This process was repeated 462 times, once per sample. Figure 11 provides a smaller example of the phylogenetic tree transformation process. The code to achieve this transformation was implemented in Python, and took roughly two weeks to finish running.
+
+<p>
+![An example of bottom-up propagation of abundance counts](/Users/viveksriram/Desktop/ThesisFigures/figure15.png)
+
+</p>
+
+In addition to using calculating counts going left and right at each internal node, code was also written in Python to determine the taxonomic rankings of each internal node, based upon the assigned taxonomies from the RDP for each ASV column in the sequence table. Figure 12 provides a smaller example of this propagation process.
+
+<p>
+![An example of bottom-up propagation of Taxonomies](/Users/viveksriram/Desktop/ThesisFigures/figure16.png)
+
+
+</p>
+
+With calculated counts and taxonomies for each of the internal nodes of our phylogenetic tree, we then applied a logit mixed-effect binomial model to each one, using the "glmer" function of the R "lme4" package (Bates 2015). At each node, we had 370 observations after filtration for missing values. There were a total of 129 different patients in our dataset. We incorporated a random effect for patient ID, and a nested random effect within patientID for sampleDate. We also included fixed effects for Batch number, transplant Age, gender, ethnicity, diagnosis, transplant type, graft source, vital status, care environment, presence of acute graft v. host disease, presence of chronic graft v. host disease, ANC500 level, and "preOrPost," telling us if the first sample was taken before or after the transplant date. 
+
+
+The general format of our mixed effects model is as follows:
+
+$logit(P_{i}(A)) = X_{i}\beta^{(A)} + \gamma_{i}^{(A)} + \epsilon_{it}^{(A)}$
+
+$P_{i}(A)$ is the probability of picking the left child of node A for sample $i$ at time $t$.
+
+$\gamma_{i}^{(A)} = N(0, \sigma_{\gamma}^{2})$
+
+$\epsilon_{i}^{(A)} = N(0, \sigma_{\epsilon}^{2})$
+
+$for \ i = 1,...,370$
+
+In most cases, the regression model would fail to converge and provide meaningful results. However, there were twenty-two different internal nodes for which our model finished running and identified different variables to be significant. There were also several instances where Batch effects were noticed, including four nodes where the only significant variable was Batch number. The eighteen nodes that identified significant variables other than Batch are detailed in the table below, providing their taxonomy, the taxonomies of their children, and the significant covariates at their node.
+
+<p>
+----------------------------------------------------------------------------------
+ Taxonomy                    Children's Taxonomies                                  Significant Variables
+--------------------------- ------------------------------------------------------ ---------------------------
+ None/NA                     Kingdom/Woesearchaeota, None/NA                        Diagnosis(MDS, Other), Graft Source(Cord, PBPC), Care Environment(2), ANC500
+  
+ Domain/Bacteria             Domain/Bacteria, Domain/Bacteria                       Gender(M), Hispanic(Yes), Transplant Type(Auto), Care Environment(2), preOrPost(pre)
+  
+ Phylum/Firmicutes           Class/Selenomonadales, Kingdom/Firmicutes              Gender(M), Hispanic(Unk), Care Environment(2), preOrPost(pre)  
+ 
+ Domain/Bacteria             Species/Gemella, Domain/Bacteria                       Transplant Age, Gender(M), Hispanic(Unk), Diagnosis(MDS), Transplant Type(Auto), preOrPost(pre), CGVHD
+  
+ Order/Ruminococcaceae       Order/Ruminococcaceae, Order/Ruminococcaceae           Hispanic(Yes), Graft Source(BM/PBPC)
+  
+ Domain/Bacteria             Domain/Bacteria, Kingdom/Firmicutes                    Hispanic(Yes), AGVHD
+  
+ Kingdom/Firmicutes          Kingdom/Firmicutes, Order/Erysipelotrichaceae          Graft Source(Cord Blood), Care Environment(2), ANC500
+  
+ Order/Erysipelotrichaceae   Order/Erysipelotrichaceae, Order/Erysipelotrichaceae   Care Environment(3)  
+  
+ Class/Lactobacillales       Class/Lactobacillales, Class/Lactobacillales           Hispanic(Yes), preOrPost(pre)
+  
+ Kingdom/Firmicutes          Order/Erysipelotrichaceae, Kingdom/Firmicutes          preOrPost(pre)
+  
+ Order/Lactobacillaceae      Family/Lactobacillus, Order/Lactobacillaceae           Transplant Type(Auto), ANC500
+  
+ Family/Streptococcus        Family/Streptococcus, Family/Streptococcus             Diagnosis(Other), CGVHD
+  
+ Family/Streptococcus        Family/Streptococcus, Family/Streptococcus             Transplant Age, Gender(M), Diagnosis(MDS, Other), Graft Source(Cord Blood)
+  
+ Family/Bacteroides          Family/Bacteroides, Family/Bacteroides                 Transplant Age, Hispanic(Unknown), Transplant Type(Allo-DLI)
+
+ Family/Streptococcus        Family/Streptococcus, Family/Streptococcus             Graft Source(BM/PBPC, PBPC), CGVHD         
+
+ Family/Bifidobacterium       Family/Bifidobacterium, Family/Bifidobacterium        Gender(M), Hispanic(Yes), Transplant Type(Auto), Graft Source(Cord Blood, PBPC), AGVHD
+    
+ Family/Streptococcus         Family/Streptococcus, Family/Streptococcus            AGVHD
+      
+ Family/Bacteroides           Family/Bacteroides, Family/Bacteroides                Diagnosis(Other), Transplant Type(Auto), Care Environment(2)
+------------- ----------------- --------------------- ----------------------------------------------------------
+Table: Significant Variables from Regression on Internal Nodes 
+
+</p>
+
+Common variables identified across taxonomic rankings include ethnicity, graft source, care environment, diagnosis, transplant type, and presence of acute and chronic graft vs. host disease.

@@ -1,17 +1,15 @@
 ---
-author: 'Your R. Name'
-date: 'May 20xx'
+author: 'Vivek Sriram'
+date: 'May 2019'
 institution: 'Duke University'
 division: 'Trinity College of Arts and Sciences'
-advisor: 'Advisor F. Name'
-#altadvisor: 'Your Other Advisor'
-# Delete line 7 if you only have one advisor
-committeememberone: 'Committeemember O. Name'
-committeemembertwo: 'Committeemember T. Name'
-dus: 'Dus X. Name'
+advisor: 'Li Ma'
+committeememberone: 'Alexander Volfovsky'
+committeemembertwo: 'Fan Li'
+dus: 'Amy Herring'
 department: 'Department of Statistical Science'
 degree: 'Bachelor of Science in Statistical Science'
-title: 'My Final College Paper'
+title: 'Statistical Analysis of the Human Gut Microbiome'
 knit: "bookdown::render_book"
 site: bookdown::bookdown_site
 output: 
@@ -29,8 +27,8 @@ abstract: |
 # needed on the line after the |.
 acknowledgements: |
   I want to thank a few people.
-dedication: |
-  You can have a dedication here if you wish. 
+#dedication: |
+#  You can have a dedication here if you wish. 
 preface: |
   This is an example of a thesis setup to use the reed thesis document class
   (for LaTeX) and the R bookdown package, in general.
