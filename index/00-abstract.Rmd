@@ -1,3 +1,5 @@
 The preface pretty much says it all.  \par
 
 Second paragraph of abstract starts here.
+
+Human gut microbiome data from the Memorial Sloan Kettering Cancer Center was statistically analyzed in an effort to characterize potential associations between patient traits and their bacterial compositions. Principal Coordinates Analysis was conducted to create ordination plots from processed ASV tables generated for the sequencing data. Interactive visualizations were developed in Tableau to visualize trends in the microbiome dynamics of patients. Phylogenetic Tree Decomposition was applied to create a transformation of bacterial abundance data that would provide contextual insight into links between patient traits and their microbiomes. Ultimately, our methodology shows much promise for the identification of connections between patient recovery from leukemia and their microbiomes.
