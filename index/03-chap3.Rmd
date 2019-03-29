@@ -1,5 +1,5 @@
+# Interactive Visualizations in Tableau
 
-# Chapter 3. Interactive Visualizations in Tableau
 Tableau is a user-friendly application helpful in the design of interactive visualizations. We used this application to visualize the our data over time in our ordination plots and determine if there were any noticeable associations between variables in our metadata and the dynamics of our samples.
 
 In each Tableau sheet created, hovering over a single point will cause that sample, as well as all other samples corresponding to the same patient, to be highlighted. This behavior allows us to specifically visualize how our samples' distributions change on an individual basis.

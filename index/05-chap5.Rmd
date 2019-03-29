@@ -1,4 +1,5 @@
-# Chapter 5. Phylogenetic Tree Decomposition
+# Phylogenetic Tree Decomposition
+
 There are several aspects of microbiome data that make statistical analysis difficult. Potential issues include high dimensionality with large numbers of OTUs, sparsity due to small OTU counts, and potential correlations among counts of different OTUs. These aspects can cause problems when attempting to perform inference on the abundances of taxonomic units. Furthermore, simply analyzing regression results for a single OTU at a time fails to take into account the dependencies between different bacterial populations in the gut.
 
 To address these concerns, we applied a Phylogenetic Tree Decomposition to our microbiome data. This methodology replicates concepts introduced in PhyloScan (Tang 2018) and DTM (Wang 2017). Using a phylogenetic tree can summarize the evolutionary relationships amongst the OTUs, allowing us to have a better context of their functional relationships and enriching the overall model fitting process.

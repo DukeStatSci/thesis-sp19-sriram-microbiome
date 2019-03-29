@@ -1,5 +1,5 @@
+# Linear Regression on Summary Statistics
 
-# Chapter 4. Linear Regression on Summary Statistics
 With the processing and filtration of our data, as well as its visualization in Tableau, we turned to basic linear regressions as well as non-parametric statistical tests to attempt to evaluate how our covariates may be linked to the dynamics of the microbiome.
 
 Based upon exploratory data analysis, we kept all of our continuous variables untransformed. There were no extremely concerning trends in any of our categorical variables either, so we did not transform them. There was also no need to transform the outcome variable of maximum distance.

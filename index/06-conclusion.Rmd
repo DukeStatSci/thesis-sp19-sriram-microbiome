@@ -1,4 +1,5 @@
 # Conclusion {-}
+
 Overall, our work from this year gave us much insight into the methodology required to understand and process microbiome data, as well as revealed the potential behind new methodologies for the visualization and analysis of associations between patient information and microbiome compositions.
 
 In terms of future directions for our project, there are many avenues that we can take. With respect to processing, we can investigate the use of different filtration parameters in our initial generation of our ASV table.

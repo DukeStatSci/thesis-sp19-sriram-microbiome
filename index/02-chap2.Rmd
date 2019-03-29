@@ -1,5 +1,5 @@
+# Post-processing and Filtration of the Sequence Table
 
-# Chapter 2. Post-processing and Filtration of the Sequence Table
 The ASV table produced by Alex Sibley consisted of seven different bathces of stool samples produced by MSK. These distinct tables were merged into a single ASV table, with columns representing different ASVs, rows representing sampling, and counts in the table representing the abundance of each ASV in each of our samples.
 
 DADA2 was used to remove chimeric sequences from the sequence table by comparing each inferred sequence to others in the table, and removing those that could be reproduced by stitching together two more abundant sequences. The DADA2 naive Bayesian classifier was then used to compare sequence variants to the RDP v14 training set of classified sequences (Cole 2013). Through this process, each ASV column is assigned a full taxonomy, including Kingdom, Phylum, Class, Order, Family, and Genus.

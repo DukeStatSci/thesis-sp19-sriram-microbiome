@@ -1,13 +1,5 @@
-<!--
-This is for including Chapter 1.  Notice that it's also good practice to name your chunk.  This will help you debug potential issues as you knit.  The chunk above is called intro and the one below is called chapter1.  Feel free to change the name of the Rmd file as you wish, but don't forget to change it here from chap1.Rmd.
--->
+# Pre-processing of Microbiome Sequencing Data
 
-<!--
-The {#rmd-basics} text after the chapter declaration will allow us to link throughout the document back to the beginning of Chapter 1.  These labels will automatically be generated (if not specified) by changing the spaces to hyphens and capital letters to lowercase.  Look for the reference to this label at the beginning of Chapter 2.
--->
-
-
-# Chapter 1: Pre-processing of Microbiome Sequencing Data
 Microbiome data can be procured from a multitude of sample types, including skin, the vagina, and the gut. Taken immediately from a wet-lab experiment, microbiome data starts off simply as a collection of FASTQ reads, each representing different bacterial sequences identified within the sample. 
 
 Identification and clustering of these reads is required to produce a representation of microbiome data that can be effectively used for data analysis.The classic format of these processed data is known as the Operational Taxonomic Unit (OTU) table. These tables group DNA sequences into "molecular operational taxonomic units, clusters of sequencing reads that differ by less than a fixed dissimilarity threshold" (Callahan 2017). Each row in the table represents a sample, and each column represents a different OTU. In the past couple of years, new methods have allowed researchers to work with amplicon sequence variants (ASVs) instead of OTUs. ASV groupings can be "resolved exactly, down to the level of single-nucleotide differences over the sequenced gene region," allowing for improved resolution of processed data (Callahan 2017). The DADA2 pipeline in R can be used to process microbiome sequence data and create an ASV table, yielding "more real variants and output[ting] fewer spurious sequences than other methods" (Callahan 2016).
