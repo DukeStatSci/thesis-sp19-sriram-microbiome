@@ -103,7 +103,7 @@ Through this process, we dropped the following phyla from our dataset: Armatimon
 The previous filtration steps required our taxonomic annotations to properly work. Without taxonomies, we can use prevalence filtering as a form of unsupervised filtration to further streamline our data. We plotted graphs of prevalence against total abundance for each phylum in an effort to identify an appropriate prevalence threshold (Figure 3).
 
 <p>
-![Feature Prevalence of Phyla against Total Abundance in our Dataset](/Users/viveksriram/Desktop/ThesisFigures/figure3.png)
+![Feature Prevalence of Phyla against Total Abundance in our Dataset](figure/figure3.png)
 
 </p>
 
@@ -114,19 +114,19 @@ In order to account for differences in library size, variance, and scale, we had
 We visualized ordination plots of the samples in our dataset, as well as of the distribution of taxa present in each sample (Figure 4).
 
 <p>
-![Ordination Plots of Samples and of Phyla](/Users/viveksriram/Desktop/ThesisFigures/figure4.png)
+![Ordination Plots of Samples and of Phyla](figure/figure4.png)
 
 </p>
 
 In addition to looking at the specific distribution of phyla for our samples, we can color-code the different datapoints representing each of our samples to determine if there are any obvious clustering patterns based upon the covariates in our metadata. In the following two plots, we visualize vital status and graft source for our patients across all time points (Figures 5 and 6).
 
 <p>
-![Ordination Plot of Samples, colored by Vital Status](/Users/viveksriram/Desktop/ThesisFigures/figure5.png)
+![Ordination Plot of Samples, colored by Vital Status](figure/figure5.png)
 
 </p>
 
 <p>
-![Ordination Plot of Samples, colored by Graft Source](/Users/viveksriram/Desktop/ThesisFigures/figure6.png)
+![Ordination Plot of Samples, colored by Graft Source](figure/figure6.png)
 
 </p>
 
@@ -135,7 +135,7 @@ While these visualizations revealed some information into the distributions of b
 We began by creating a Scree plot to determine the contributions of our different principal coordinate axes (Figure 7).
 
 <p>
-![Scree Plot of Contributions from PCoA Axes](/Users/viveksriram/Desktop/ThesisFigures/figure7.png)
+![Scree Plot of Contributions from PCoA Axes](figure/figure7.png)
 
 </p>
 

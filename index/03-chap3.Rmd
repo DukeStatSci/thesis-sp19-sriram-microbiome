@@ -9,21 +9,21 @@ Figures 8, 9, and 10 include some examples of the plots designed in Tableau.
 Figure 8 depicts an ordination plot, colored by Batch number, and connected by patient ID. The thickness of lines connecting points to one another increases as time progresses. Hovering over a point will also highlight other sample points and the path representative of the selected patient.
 
 <p>
-![Ordination Plot colored by Batch Number and connected by Patient ID](/Users/viveksriram/Desktop/ThesisFigures/figure8.png)
+![Ordination Plot colored by Batch Number and connected by Patient ID](figure/figure8.png)
 
 </p>
 
 Figure 9 shows plots of the maximum distance travelled by different patients, separated by whether or not their first sample date occurred before or after their transplant. It appears roughly that patients with first time points occurring before transplant date may have potentially higher maximum distances.
 
 <p>
-![Plots of Maximum Distance traveled by Patient Microbiome](/Users/viveksriram/Desktop/ThesisFigures/figure9.png)
+![Plots of Maximum Distance traveled by Patient Microbiome](figure/figure9.png)
 
 </p>
 
 Figure 10 depicts two ordination plots colored by presence of acute graft versus host disease. The top plot depicts agvhd values taken within the twelve weeks prior to transplants, and the second plot depicts agvhd values taken within the twelve weeks after. Both plots can be manipulated to specify the desired time frame. This kind of visualization allows us to more directly compare the distributions of our covariates at different times.
 
 <p>
-![Ordination Plots colored by AGVHD, separated by Time](/Users/viveksriram/Desktop/ThesisFigures/figure10.png)
+![Ordination Plots colored by AGVHD, separated by Time](figure/figure10.png)
 
 </p>
 
