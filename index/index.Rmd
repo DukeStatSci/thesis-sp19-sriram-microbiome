@@ -94,3 +94,7 @@ Having your code and commentary all together in one place has a plethora of bene
 Anyone who needs to use data analysis, math, tables, a lot of figures, complex cross-references, or who just cares about the final appearance of their document should use _R Markdown_. Of particular use should be anyone in the sciences, but the user-friendly nature of _Markdown_ and its ability to keep track of and easily include figures, automatically generate a table of contents, index, references, table of figures, etc. should make it of great benefit to nearly anyone writing a thesis project.
 
 -->
+
+# Abstract {.unnumbered}
+
+Human gut microbiome data from the Memorial Sloan Kettering Cancer Center was statistically analyzed in an effort to characterize potential associations between patient traits and their bacterial compositions. Principal Coordinates Analysis was conducted to create ordination plots from processed ASV tables generated for the sequencing data. Interactive visualizations were developed in Tableau to visualize trends in the microbiome dynamics of patients. Phylogenetic Tree Decomposition was applied to create a transformation of bacterial abundance data that would provide contextual insight into links between patient traits and their microbiomes. Ultimately, our methodology shows much promise for the identification of connections between patient recovery from leukemia and their microbiomes.
