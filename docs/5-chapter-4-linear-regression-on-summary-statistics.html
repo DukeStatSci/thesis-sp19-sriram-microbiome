@@ -1,0 +1,427 @@
+<!DOCTYPE html>
+<html >
+
+<head>
+
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <title>Chapter 5 Chapter 4. Linear Regression on Summary Statistics | Statistical Analysis of the Human Gut Microbiome</title>
+  <meta name="description" content="Chapter 5 Chapter 4. Linear Regression on Summary Statistics | Statistical Analysis of the Human Gut Microbiome">
+  <meta name="generator" content="bookdown  and GitBook 2.6.7">
+
+  <meta property="og:title" content="Chapter 5 Chapter 4. Linear Regression on Summary Statistics | Statistical Analysis of the Human Gut Microbiome" />
+  <meta property="og:type" content="book" />
+  
+  
+  
+  
+
+  <meta name="twitter:card" content="summary" />
+  <meta name="twitter:title" content="Chapter 5 Chapter 4. Linear Regression on Summary Statistics | Statistical Analysis of the Human Gut Microbiome" />
+  
+  
+  
+
+<meta name="author" content="Vivek Sriram">
+
+
+
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="apple-mobile-web-app-capable" content="yes">
+  <meta name="apple-mobile-web-app-status-bar-style" content="black">
+  
+  
+<link rel="prev" href="4-chapter-3-interactive-visualizations-in-tableau.html">
+<link rel="next" href="6-chapter-5-phylogenetic-tree-decomposition.html">
+<script src="libs/jquery-2.2.3/jquery.min.js"></script>
+<link href="libs/gitbook-2.6.7/css/style.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-table.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-bookdown.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-highlight.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-search.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-fontsettings.css" rel="stylesheet" />
+
+
+
+
+
+
+
+
+
+<style type="text/css">
+div.sourceCode { overflow-x: auto; }
+table.sourceCode, tr.sourceCode, td.lineNumbers, td.sourceCode {
+  margin: 0; padding: 0; vertical-align: baseline; border: none; }
+table.sourceCode { width: 100%; line-height: 100%; }
+td.lineNumbers { text-align: right; padding-right: 4px; padding-left: 4px; color: #aaaaaa; border-right: 1px solid #aaaaaa; }
+td.sourceCode { padding-left: 5px; }
+code > span.kw { color: #007020; font-weight: bold; } /* Keyword */
+code > span.dt { color: #902000; } /* DataType */
+code > span.dv { color: #40a070; } /* DecVal */
+code > span.bn { color: #40a070; } /* BaseN */
+code > span.fl { color: #40a070; } /* Float */
+code > span.ch { color: #4070a0; } /* Char */
+code > span.st { color: #4070a0; } /* String */
+code > span.co { color: #60a0b0; font-style: italic; } /* Comment */
+code > span.ot { color: #007020; } /* Other */
+code > span.al { color: #ff0000; font-weight: bold; } /* Alert */
+code > span.fu { color: #06287e; } /* Function */
+code > span.er { color: #ff0000; font-weight: bold; } /* Error */
+code > span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warning */
+code > span.cn { color: #880000; } /* Constant */
+code > span.sc { color: #4070a0; } /* SpecialChar */
+code > span.vs { color: #4070a0; } /* VerbatimString */
+code > span.ss { color: #bb6688; } /* SpecialString */
+code > span.im { } /* Import */
+code > span.va { color: #19177c; } /* Variable */
+code > span.cf { color: #007020; font-weight: bold; } /* ControlFlow */
+code > span.op { color: #666666; } /* Operator */
+code > span.bu { } /* BuiltIn */
+code > span.ex { } /* Extension */
+code > span.pp { color: #bc7a00; } /* Preprocessor */
+code > span.at { color: #7d9029; } /* Attribute */
+code > span.do { color: #ba2121; font-style: italic; } /* Documentation */
+code > span.an { color: #60a0b0; font-weight: bold; font-style: italic; } /* Annotation */
+code > span.cv { color: #60a0b0; font-weight: bold; font-style: italic; } /* CommentVar */
+code > span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Information */
+</style>
+
+</head>
+
+<body>
+
+
+
+  <div class="book without-animation with-summary font-size-2 font-family-1" data-basepath=".">
+
+    <div class="book-summary">
+      <nav role="navigation">
+
+<ul class="summary">
+<li><a href="./"></a></li>
+<li class="divider"></li>
+<li class="chapter" data-level="1" data-path="1-introduction.html"><a href="1-introduction.html"><i class="fa fa-check"></i><b>1</b> Introduction</a></li>
+<li class="chapter" data-level="2" data-path="2-chapter-1-pre-processing-of-microbiome-sequencing-data.html"><a href="2-chapter-1-pre-processing-of-microbiome-sequencing-data.html"><i class="fa fa-check"></i><b>2</b> Chapter 1: Pre-processing of Microbiome Sequencing Data</a></li>
+<li class="chapter" data-level="3" data-path="3-chapter-2-post-processing-and-filtration-of-the-sequence-table.html"><a href="3-chapter-2-post-processing-and-filtration-of-the-sequence-table.html"><i class="fa fa-check"></i><b>3</b> Chapter 2. Post-processing and Filtration of the Sequence Table</a></li>
+<li class="chapter" data-level="4" data-path="4-chapter-3-interactive-visualizations-in-tableau.html"><a href="4-chapter-3-interactive-visualizations-in-tableau.html"><i class="fa fa-check"></i><b>4</b> Chapter 3. Interactive Visualizations in Tableau</a></li>
+<li class="chapter" data-level="5" data-path="5-chapter-4-linear-regression-on-summary-statistics.html"><a href="5-chapter-4-linear-regression-on-summary-statistics.html"><i class="fa fa-check"></i><b>5</b> Chapter 4. Linear Regression on Summary Statistics</a></li>
+<li class="chapter" data-level="6" data-path="6-chapter-5-phylogenetic-tree-decomposition.html"><a href="6-chapter-5-phylogenetic-tree-decomposition.html"><i class="fa fa-check"></i><b>6</b> Chapter 5. Phylogenetic Tree Decomposition</a></li>
+<li class="chapter" data-level="" data-path="conclusion.html"><a href="conclusion.html"><i class="fa fa-check"></i>Conclusion</a></li>
+<li class="appendix"><span><b>Appendix</b></span></li>
+<li class="chapter" data-level="A" data-path="A-the-first-appendix.html"><a href="A-the-first-appendix.html"><i class="fa fa-check"></i><b>A</b> The First Appendix</a></li>
+<li class="chapter" data-level="B" data-path="B-the-second-appendix-for-fun.html"><a href="B-the-second-appendix-for-fun.html"><i class="fa fa-check"></i><b>B</b> The Second Appendix, for Fun</a></li>
+<li class="chapter" data-level="" data-path="references.html"><a href="references.html"><i class="fa fa-check"></i>References</a></li>
+<li class="divider"></li>
+<li><a href="https://github.com/rstudio/bookdown" target="blank">Published with bookdown</a></li>
+</ul>
+
+      </nav>
+    </div>
+
+    <div class="book-body">
+      <div class="body-inner">
+        <div class="book-header" role="navigation">
+          <h1>
+            <i class="fa fa-circle-o-notch fa-spin"></i><a href="./">Statistical Analysis of the Human Gut Microbiome</a>
+          </h1>
+        </div>
+
+        <div class="page-wrapper" tabindex="-1" role="main">
+          <div class="page-inner">
+
+            <section class="normal" id="section-">
+<div id="chapter-4.-linear-regression-on-summary-statistics" class="section level1">
+<h1><span class="header-section-number">Chapter 5</span> Chapter 4. Linear Regression on Summary Statistics</h1>
+<p>With the processing and filtration of our data, as well as its visualization in Tableau, we turned to basic linear regressions as well as non-parametric statistical tests to attempt to evaluate how our covariates may be linked to the dynamics of the microbiome.</p>
+<p>Based upon exploratory data analysis, we kept all of our continuous variables untransformed. There were no extremely concerning trends in any of our categorical variables either, so we did not transform them. There was also no need to transform the outcome variable of maximum distance.</p>
+<p>We used lattice plots to search for interaction effects across our categorical variables, as well as boxplots to search for connections between categorical and quantitatie covariates. Identified interactions were included in our baseline model. Backwards selection was then performed using AIC as a scoring criterion.</p>
+<p>For maximum distance as the outcome, our final model with the lowest AIC based on backward selection came out to be as follows:</p>
+<p><span class="math inline">\(maxDistance_{i} = {\beta_{transplantAge}}transplantAge_{i} + {\beta_{AlloDLI}}I(transplantType_{i}=AlloDLI) + {\beta_{Auto}}I(transplantType_{i}=Auto) +{\beta_{Cord}}I(graftSource_{i}=Cord) + {\beta_{PBPC}}I(graftSource_{i}=PBPC) + {\beta_{Dead}}I(vitalStatus_{i}=Dead) + {\beta_{CGVHD}}I(CGVHD_{i}=1)+ {\beta_{anc500}}anc500_{i} + {\beta_{careEnv2}}I(careEnv_{i}=2) + {\beta_{careEnv3}}I(careEnv_{i}=3) + {\beta_{totalTimeSpan}}totalTimeSpan_{i} + {\beta_{vitalStatus/careEnv2}}I(vitalStatus/careEnv2_{i}=1) + {\beta_{vitalStatus/careEnv3}}I(vitalStatus/careEnv3_{i}=1)\)</span></p>
+<p>This model had an AIC of -34.11267, and it identified the following covariates as significant:</p>
+<p>
+<table style="width:83%;">
+<caption>Significant P-values from linear regression with max distance as outcome</caption>
+<colgroup>
+<col width="59%" />
+<col width="23%" />
+</colgroup>
+<thead>
+<tr class="header">
+<th align="center">Covariate</th>
+<th align="center">P-value</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td align="center">Age at Transplant</td>
+<td align="center">0.06975</td>
+</tr>
+<tr class="even">
+<td align="center">Graft Source (Cord Blood)</td>
+<td align="center">0.00173</td>
+</tr>
+<tr class="odd">
+<td align="center">Vital Status (Dead)</td>
+<td align="center">0.07956</td>
+</tr>
+<tr class="even">
+<td align="center">Total Time Span</td>
+<td align="center">0.09064</td>
+</tr>
+<tr class="odd">
+<td align="center">Vital Status(Dead)/Care Environment(2)</td>
+<td align="center">0.06164</td>
+</tr>
+</tbody>
+</table>
+</p>
+<p>Our assumptions for equality of subpopulation standard deviations, as well as that our samples came from a normally distributed population, are fulfilled by the residual plot and normal QQ-plot for our data.</p>
+<p>We repeated the same backward selection process as above, but this time, we used last distance as our outcome variable.</p>
+<p>Based on backward selection according to AIC, we came up with the following model:</p>
+<p><span class="math inline">\(lastDistance_{i} = {\beta_{Black}}I(race_{i}=Black) +{\beta_{MoreThanOne}}I(race_{i}=MoreThanOne) + {\beta_{White}}I(race_{i}=White) + {\beta_{hispanicUnk}}I(hispanic_{i}=Unk) + {\beta_{hispanicYes}}I(hispanic_{i}=Yes)+ {\beta_{Cord}}I(graftSource_{i}=Cord) + {\beta_{PBPC}}I(graftSource_{i}=PBPC) + {\beta_{Dead}}I(vitalStatus_{i}=Dead) + {\beta_{CGVHD}}I(CGVHD_{i}=1) + {\beta_{totalTimeSpan}}totalTimeSpan_{i}\)</span></p>
+<p>Our model had an AIC of -32.37633, and identified the following variables as significant.</p>
+<p>
+<table style="width:65%;">
+<caption>Significant P-values from linear regression with last distance as outcome</caption>
+<colgroup>
+<col width="41%" />
+<col width="23%" />
+</colgroup>
+<thead>
+<tr class="header">
+<th align="center">Covariate</th>
+<th align="center">P-value</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td align="center">Race (Black)</td>
+<td align="center">0.05396</td>
+</tr>
+<tr class="even">
+<td align="center">Graft Source (Cord Blood)</td>
+<td align="center">0.00569</td>
+</tr>
+<tr class="odd">
+<td align="center">Vital Status (Dead)</td>
+<td align="center">0.03409</td>
+</tr>
+<tr class="even">
+<td align="center">Total Time Span</td>
+<td align="center">0.04429</td>
+</tr>
+</tbody>
+</table>
+</p>
+<p>In addition to performing linear regressions for our two summary statistics, we also applied various non-parametric tests, in the hope that they would provide further insight into variables that may be significant for our two metrics. While these tests are not necessarily as useful as regression analyses due to the fact that they do not take into account the context from multiple variables, they can still be potentially informative.</p>
+Performing these tests for our maximum distance metric, we see that graft source appears to be significant.
+<p>
+<table style="width:89%;">
+<caption>P-values from non-parametric statistical tests for maximum distance as outcome</caption>
+<colgroup>
+<col width="56%" />
+<col width="31%" />
+</colgroup>
+<thead>
+<tr class="header">
+<th align="center">Covariate</th>
+<th align="center">P-value</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td align="center">Chronic Graft vs Host Disease</td>
+<td align="center">0.3492</td>
+</tr>
+<tr class="even">
+<td align="center">Acute Graft vs Host Disease</td>
+<td align="center">0.3611</td>
+</tr>
+<tr class="odd">
+<td align="center">Gender</td>
+<td align="center">0.6318</td>
+</tr>
+<tr class="even">
+<td align="center">Vital Status</td>
+<td align="center">0.1448</td>
+</tr>
+<tr class="odd">
+<td align="center">initialNegative</td>
+<td align="center">0.6797</td>
+</tr>
+<tr class="even">
+<td align="center">Batch</td>
+<td align="center">0.4793</td>
+</tr>
+<tr class="odd">
+<td align="center">Race</td>
+<td align="center">0.3308</td>
+</tr>
+<tr class="even">
+<td align="center">Hispanic</td>
+<td align="center">0.1481</td>
+</tr>
+<tr class="odd">
+<td align="center">Diagnosis</td>
+<td align="center">0.9087</td>
+</tr>
+<tr class="even">
+<td align="center">Transplant Type</td>
+<td align="center">0.2799</td>
+</tr>
+<tr class="odd">
+<td align="center">Transplant Response</td>
+<td align="center">0.6978</td>
+</tr>
+<tr class="even">
+<td align="center">Graft Source</td>
+<td align="center">0.0105</td>
+</tr>
+<tr class="odd">
+<td align="center">Care Environment</td>
+<td align="center">0.6004</td>
+</tr>
+</tbody>
+</table>
+</p>
+<p>When we perform these same tests for our last distance metric, we see that none of our variables are significant.</p>
+<p>
+<table style="width:86%;">
+<caption>P-values from non-parametric statistical tests for last distance as outcome</caption>
+<colgroup>
+<col width="54%" />
+<col width="31%" />
+</colgroup>
+<thead>
+<tr class="header">
+<th align="center">Covariate</th>
+<th align="center">P-value</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td align="center">Chronic Graft vs Host Disease</td>
+<td align="center">0.5089</td>
+</tr>
+<tr class="even">
+<td align="center">Acute Graft vs Host Disease</td>
+<td align="center">0.7019</td>
+</tr>
+<tr class="odd">
+<td align="center">Gender</td>
+<td align="center">0.6116</td>
+</tr>
+<tr class="even">
+<td align="center">Vital Status</td>
+<td align="center">0.1732</td>
+</tr>
+<tr class="odd">
+<td align="center">initialNegative</td>
+<td align="center">0.4349</td>
+</tr>
+<tr class="even">
+<td align="center">Batch</td>
+<td align="center">0.1426</td>
+</tr>
+<tr class="odd">
+<td align="center">Race</td>
+<td align="center">0.4292</td>
+</tr>
+<tr class="even">
+<td align="center">Hispanic</td>
+<td align="center">0.4504</td>
+</tr>
+<tr class="odd">
+<td align="center">Diagnosis</td>
+<td align="center">0.7726</td>
+</tr>
+<tr class="even">
+<td align="center">Transplant Type</td>
+<td align="center">0.7830</td>
+</tr>
+<tr class="odd">
+<td align="center">Transplant Response</td>
+<td align="center">0.6534</td>
+</tr>
+<tr class="even">
+<td align="center">Graft Source</td>
+<td align="center">0.1529</td>
+</tr>
+<tr class="odd">
+<td align="center">Care Environment</td>
+<td align="center">0.7802</td>
+</tr>
+</tbody>
+</table>
+</p>
+<p>A major concern we had after these analyses was that our summary metrics could potentially vary extensively based upon the addition and removal of samples from our dataset. To deal with this possible high sensitivity to data, we decided to make use of a more creative method for modeling the abundances of ASVs in our data.</p>
+
+</div>
+            </section>
+
+          </div>
+        </div>
+      </div>
+<a href="4-chapter-3-interactive-visualizations-in-tableau.html" class="navigation navigation-prev " aria-label="Previous page"><i class="fa fa-angle-left"></i></a>
+<a href="6-chapter-5-phylogenetic-tree-decomposition.html" class="navigation navigation-next " aria-label="Next page"><i class="fa fa-angle-right"></i></a>
+    </div>
+  </div>
+<script src="libs/gitbook-2.6.7/js/app.min.js"></script>
+<script src="libs/gitbook-2.6.7/js/lunr.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-search.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-sharing.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-fontsettings.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-bookdown.js"></script>
+<script src="libs/gitbook-2.6.7/js/jquery.highlight.js"></script>
+<script>
+gitbook.require(["gitbook"], function(gitbook) {
+gitbook.start({
+"sharing": {
+"github": false,
+"facebook": true,
+"twitter": true,
+"google": false,
+"linkedin": false,
+"weibo": false,
+"instapaper": false,
+"vk": false,
+"all": ["facebook", "google", "twitter", "linkedin", "weibo", "instapaper"]
+},
+"fontsettings": {
+"theme": "white",
+"family": "sans",
+"size": 2
+},
+"edit": {
+"link": null,
+"text": null
+},
+"history": {
+"link": null,
+"text": null
+},
+"download": [["thesis.pdf", "PDF"], ["thesis.epub", "EPUB"], ["thesis.docx", "Word"]],
+"toc": {
+"collapse": "section"
+}
+});
+});
+</script>
+
+<!-- dynamically load mathjax for compatibility with self-contained -->
+<script>
+  (function () {
+    var script = document.createElement("script");
+    script.type = "text/javascript";
+    var src = "";
+    if (src === "" || src === "true") src = "https://mathjax.rstudio.com/latest/MathJax.js?config=TeX-MML-AM_CHTML";
+    if (location.protocol !== "file:" && /^https?:/.test(src))
+      src = src.replace(/^https?:/, '');
+    script.src = src;
+    document.getElementsByTagName("head")[0].appendChild(script);
+  })();
+</script>
+</body>
+
+</html>
