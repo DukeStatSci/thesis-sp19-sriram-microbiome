@@ -6,11 +6,9 @@ Identification and clustering of these reads is required to produce a representa
 
 As an exploration of the use of the DADA2 pipeline for the processing of microbiome sequencing data, we used the European Nucleotide Archive (Harrison 2018) to download raw read data from Catherine Lozupone's 2013 study on gut-linked diseases prevalent in HIV (Lozupone 2013). With these data, we applied Benjamin Callahan's 2016 paper, "Bioconductor Workflow for Microbiome Analysis: from raw reads to community analyses," to manipulate the Lozupone sequencing data. With this pipeline, we visualized the fastq quality scores of our read files (Figure 1) to trim our input reads at ideal positions. We also filtered reads through the enforcement of a maximum of 2 expected errors per read. 
 
-<p>
-![Fastq quality scores for a sample read file](figure/figure1.png)
-
-</p>
-
+```{r figure1, fig.cap="Fastq quality scores for a sample read file", out.width = "400px",echo=FALSE}
+include_graphics(path = "figure/figure1.png")
+```
 
 Following the filtration of input reads, we used DADA2 to infer ASVs. Demultiplexed, dereplicated fastq files were selected for each sample. A sufficiently large subset of our data was taken, and then the DADA2 iterative sequence inference algorithm was run to estimate error rates. We inspected the fit between observed error rates and fitted error rates to verify that our estimations were reasonable (Figure 2)
 
