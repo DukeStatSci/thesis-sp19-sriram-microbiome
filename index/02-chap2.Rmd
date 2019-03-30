@@ -102,10 +102,10 @@ Through this process, we dropped the following phyla from our dataset: Armatimon
 
 The previous filtration steps required our taxonomic annotations to properly work. Without taxonomies, we can use prevalence filtering as a form of unsupervised filtration to further streamline our data. We plotted graphs of prevalence against total abundance for each phylum in an effort to identify an appropriate prevalence threshold (Figure 3).
 
-<p>
-![Feature Prevalence of Phyla against Total Abundance in our Dataset](figure/figure3.png)
+```{r figure3, fig.cap="Feature Prevalence of Phyla against Total Abundance in our Dataset", out.width = "700px",echo=FALSE}
+include_graphics(path = "figure/figure3.png")
+```
 
-</p>
 
 We failed to see see any real separation in our plots, so we established an arbitrary prevalence threshold of 1%.
 
@@ -113,31 +113,32 @@ In order to account for differences in library size, variance, and scale, we had
 
 We visualized ordination plots of the samples in our dataset, as well as of the distribution of taxa present in each sample (Figure 4).
 
-<p>
-![Ordination Plots of Samples and of Phyla](figure/figure4.png)
 
-</p>
+```{r figure4, fig.cap="Ordination Plots of Samples and of Phyla", out.width = "700px",echo=FALSE}
+include_graphics(path = "figure/figure4.png")
+```
+
 
 In addition to looking at the specific distribution of phyla for our samples, we can color-code the different datapoints representing each of our samples to determine if there are any obvious clustering patterns based upon the covariates in our metadata. In the following two plots, we visualize vital status and graft source for our patients across all time points (Figures 5 and 6).
 
-<p>
-![Ordination Plot of Samples, colored by Vital Status](figure/figure5.png)
 
-</p>
+```{r figure5, fig.cap="Ordination Plot of Samples, colored by Vital Status", out.width = "700px",echo=FALSE}
+include_graphics(path = "figure/figure5.png")
+```
 
-<p>
-![Ordination Plot of Samples, colored by Graft Source](figure/figure6.png)
 
-</p>
+```{r figure6, fig.cap="Ordination Plot of Samples, colored by Graft Source", out.width = "700px",echo=FALSE}
+include_graphics(path = "figure/figure6.png")
+```
 
 While these visualizations revealed some information into the distributions of bacteria in our samples, we failed to see any obvious trends across our categories. Another key issue with our plots is that we were unable to clearly identify how a single patient's sample would change over time. To quantify the dynamics of a patient's microbiome in our ordination plot, we devised two different summary statistics: maximum distance and last distance.
 
 We began by creating a Scree plot to determine the contributions of our different principal coordinate axes (Figure 7).
 
-<p>
-![Scree Plot of Contributions from PCoA Axes](figure/figure7.png)
 
-</p>
+```{r figure7, fig.cap="Scree Plot of Contributions from PCoA Axes", out.width = "700px",echo=FALSE}
+include_graphics(path = "figure/figure7.png")
+```
 
 Analyzing the plot and computing the contributions of our axes, we see that the first 17 axes constitute the the majority of contributions from our 460 total axes. So, we used these axes as part of our distance metrics; we calculated the distance from one sample to another by taking the square root of the sum of the squared differences of each of our seventeen components. 
 

@@ -12,10 +12,9 @@ include_graphics(path = "figure/figure1.png")
 
 Following the filtration of input reads, we used DADA2 to infer ASVs. Demultiplexed, dereplicated fastq files were selected for each sample. A sufficiently large subset of our data was taken, and then the DADA2 iterative sequence inference algorithm was run to estimate error rates. We inspected the fit between observed error rates and fitted error rates to verify that our estimations were reasonable (Figure 2)
 
-<p>
-![Comparison of observed and fitted error rates from the DADA2 iterative sequence inference algorithm](figure/figure2.png)
-
-</p>
+```{r figure2, fig.cap="Comparison of observed and fitted error rates from the DADA2 iterative sequence inference algorithm", out.width = "700px",echo=FALSE}
+include_graphics(path = "figure/figure2.png")
+```
 
 Using inference on pooled sequencing reads from all samples, DADA2 then removed nearly all substition and indel errors from our data. Finally, a sequence table was constructed from our sequences.
 
