@@ -104,12 +104,12 @@ Figure 2.1: Fastq quality scores for a sample read file
 </p>
 </div>
 <p>Following the filtration of input reads, we used DADA2 to infer ASVs. Demultiplexed, dereplicated fastq files were selected for each sample. A sufficiently large subset of our data was taken, and then the DADA2 iterative sequence inference algorithm was run to estimate error rates. We inspected the fit between observed error rates and fitted error rates to verify that our estimations were reasonable (Figure 2)</p>
-<p>
-<div class="figure">
-<img src="figure/figure2.png" alt="Comparison of observed and fitted error rates from the DADA2 iterative sequence inference algorithm" />
-<p class="caption">Comparison of observed and fitted error rates from the DADA2 iterative sequence inference algorithm</p>
-</div>
+<div class="figure" style="text-align: center"><span id="fig:figure2"></span>
+<img src="figure/figure2.png" alt="Comparison of observed and fitted error rates from the DADA2 iterative sequence inference algorithm" width="700px" />
+<p class="caption">
+Figure 2.2: Comparison of observed and fitted error rates from the DADA2 iterative sequence inference algorithm
 </p>
+</div>
 <p>Using inference on pooled sequencing reads from all samples, DADA2 then removed nearly all substition and indel errors from our data. Finally, a sequence table was constructed from our sequences.</p>
 <p>Just as processing of sequencing data was completed for the Lozupone dataset, Alex Sibley, a bioinformatician working with the Sung lab in the Duke School of Medicine, created an ASV table using the Memorial Sloan Kettering leukemia data. Given these data, we continued through the Callahan workflow to further filter and process our data.</p>
 
