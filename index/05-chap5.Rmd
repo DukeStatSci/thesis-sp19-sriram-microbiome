@@ -6,20 +6,20 @@ To address these concerns, we applied a Phylogenetic Tree Decomposition to our m
 
 With our completed filtration of our samples, we constructed a phylogenetic tree to represent the relations between our samples. We used the DECIPHER package in R to first perform multiple-alignment on the sequences in our ASV sequence table (Wright 2016). We then used the R package "phangorn" to fit a UPGMA tree based upon our sequences (Schliep 2018).
 
-Our full tree was a binary tree with a single root node. There were a total of 11048 leaf nodes, and 11047 internal nodes. Our filtered ASV table has a total of 462 rows, each corresponding to a distinct sample. Each column in our ASV table represents a leaf in the phylogenetic tree. With these initial abundances for a given sample, we propagated our way up through the phylogenetic tree, determining the counts going left and right at each of our 11047 internal node. This process was repeated 462 times, once per sample. Figure 11 provides a smaller example of the phylogenetic tree transformation process. The code to achieve this transformation was implemented in Python, and took roughly two weeks to finish running.
+Our full tree was a binary tree with a single root node. There were a total of 11048 leaf nodes, and 11047 internal nodes. Our filtered ASV table has a total of 462 rows, each corresponding to a distinct sample. Each column in our ASV table represents a leaf in the phylogenetic tree. With these initial abundances for a given sample, we propagated our way up through the phylogenetic tree, determining the counts going left and right at each of our 11047 internal node. This process was repeated 462 times, once per sample. Figure 6.1 provides a smaller example of the phylogenetic tree transformation process. The code to achieve this transformation was implemented in Python, and took roughly two weeks to finish running.
 
 <p>
-![An example of bottom-up propagation of abundance counts](figure/figure15.png)
 
-</p>
+```{r figure15, fig.cap="An example of bottom-up propagation of abundance counts", out.width = "700px",echo=FALSE}
+include_graphics(path = "figure/figure15.png")
+```
 
-In addition to using calculating counts going left and right at each internal node, code was also written in Python to determine the taxonomic rankings of each internal node, based upon the assigned taxonomies from the RDP for each ASV column in the sequence table. Figure 12 provides a smaller example of this propagation process.
-
-<p>
-![An example of bottom-up propagation of Taxonomies](figure/figure16.png)
+In addition to using calculating counts going left and right at each internal node, code was also written in Python to determine the taxonomic rankings of each internal node, based upon the assigned taxonomies from the RDP for each ASV column in the sequence table. Figure 6.2 provides a smaller example of this propagation process.
 
 
-</p>
+```{r figure16, fig.cap="An example of bottom-up propagation of Taxonomies", out.width = "700px",echo=FALSE}
+include_graphics(path = "figure/figure16.png")
+```
 
 With calculated counts and taxonomies for each of the internal nodes of our phylogenetic tree, we then applied a logit mixed-effect binomial model to each one, using the "glmer" function of the R "lme4" package (Bates 2015). At each node, we had 370 observations after filtration for missing values. There were a total of 129 different patients in our dataset. We incorporated a random effect for patient ID, and a nested random effect within patientID for sampleDate. We also included fixed effects for Batch number, transplant Age, gender, ethnicity, diagnosis, transplant type, graft source, vital status, care environment, presence of acute graft v. host disease, presence of chronic graft v. host disease, ANC500 level, and "preOrPost," telling us if the first sample was taken before or after the transplant date. 
 
