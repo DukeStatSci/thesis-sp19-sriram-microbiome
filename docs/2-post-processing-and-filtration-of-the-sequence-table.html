@@ -291,7 +291,7 @@
 </table>
 </p>
 <p>Through this process, we dropped the following phyla from our dataset: Armatimonadetes, Chlamydiae, Deferribacteres, Deinococcus-Thermus, Spirochaetes, and Tenericutes</p>
-<p>The previous filtration steps required our taxonomic annotations to properly work. Without taxonomies, we can use prevalence filtering as a form of unsupervised filtration to further streamline our data. We plotted graphs of prevalence against total abundance for each phylum in an effort to identify an appropriate prevalence threshold (Figure 3.1).</p>
+<p>The previous filtration steps required our taxonomic annotations to properly work. Without taxonomies, we can use prevalence filtering as a form of unsupervised filtration to further streamline our data. We plotted graphs of prevalence against total abundance for each phylum in an effort to identify an appropriate prevalence threshold (Figure 2.1).</p>
 <div class="figure" style="text-align: center"><span id="fig:figure3"></span>
 <img src="figure/figure3.png" alt="Feature Prevalence of Phyla against Total Abundance in our Dataset" width="700px" />
 <p class="caption">
@@ -300,14 +300,14 @@ Figure 2.1: Feature Prevalence of Phyla against Total Abundance in our Dataset
 </div>
 <p>We failed to see see any real separation in our plots, so we established an arbitrary prevalence threshold of 1%.</p>
 <p>In order to account for differences in library size, variance, and scale, we had to use relative abundances instead of total abundances. We transformed our data from counts to frequencies, and also applied a log transformation. We then applied Principal Coordinates Analysis (PCoA) with Bray-Curtis dissimilarity to our transformed data.</p>
-<p>We visualized ordination plots of the samples in our dataset, as well as of the distribution of taxa present in each sample (Figure 3.2).</p>
+<p>We visualized ordination plots of the samples in our dataset, as well as of the distribution of taxa present in each sample (Figure 2.2).</p>
 <div class="figure" style="text-align: center"><span id="fig:figure4"></span>
 <img src="figure/figure4.png" alt="Ordination Plots of Samples and of Phyla" width="700px" />
 <p class="caption">
 Figure 2.2: Ordination Plots of Samples and of Phyla
 </p>
 </div>
-<p>In addition to looking at the specific distribution of phyla for our samples, we can color-code the different datapoints representing each of our samples to determine if there are any obvious clustering patterns based upon the covariates in our metadata. In the following two plots, we visualize vital status and graft source for our patients across all time points (Figures 3.3 and 3.4).</p>
+<p>In addition to looking at the specific distribution of phyla for our samples, we can color-code the different datapoints representing each of our samples to determine if there are any obvious clustering patterns based upon the covariates in our metadata. In the following two plots, we visualize vital status and graft source for our patients across all time points (Figures 2.3 and 2.4).</p>
 <div class="figure" style="text-align: center"><span id="fig:figure5"></span>
 <img src="figure/figure5.png" alt="Ordination Plot of Samples, colored by Vital Status" width="700px" />
 <p class="caption">
@@ -321,7 +321,7 @@ Figure 2.4: Ordination Plot of Samples, colored by Graft Source
 </p>
 </div>
 <p>While these visualizations revealed some information into the distributions of bacteria in our samples, we failed to see any obvious trends across our categories. Another key issue with our plots is that we were unable to clearly identify how a single patient’s sample would change over time. To quantify the dynamics of a patient’s microbiome in our ordination plot, we devised two different summary statistics: maximum distance and last distance.</p>
-<p>We began by creating a Scree plot to determine the contributions of our different principal coordinate axes (Figure 3.5).</p>
+<p>We began by creating a Scree plot to determine the contributions of our different principal coordinate axes (Figure 2.5).</p>
 <div class="figure" style="text-align: center"><span id="fig:figure7"></span>
 <img src="figure/figure7.png" alt="Scree Plot of Contributions from PCoA Axes" width="700px" />
 <p class="caption">
