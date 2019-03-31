@@ -100,7 +100,7 @@ Table: Feature Prevalence of Phyla in our Dataset
 
 Through this process, we dropped the following phyla from our dataset: Armatimonadetes, Chlamydiae, Deferribacteres, Deinococcus-Thermus, Spirochaetes, and Tenericutes
 
-The previous filtration steps required our taxonomic annotations to properly work. Without taxonomies, we can use prevalence filtering as a form of unsupervised filtration to further streamline our data. We plotted graphs of prevalence against total abundance for each phylum in an effort to identify an appropriate prevalence threshold (Figure 3.1).
+The previous filtration steps required our taxonomic annotations to properly work. Without taxonomies, we can use prevalence filtering as a form of unsupervised filtration to further streamline our data. We plotted graphs of prevalence against total abundance for each phylum in an effort to identify an appropriate prevalence threshold (Figure 2.1).
 
 ```{r figure3, fig.cap="Feature Prevalence of Phyla against Total Abundance in our Dataset", out.width = "700px",echo=FALSE}
 include_graphics(path = "figure/figure3.png")
@@ -111,15 +111,14 @@ We failed to see see any real separation in our plots, so we established an arbi
 
 In order to account for differences in library size, variance, and scale, we had to use relative abundances instead of total abundances. We transformed our data from counts to frequencies, and also applied a log transformation. We then applied Principal Coordinates Analysis (PCoA) with Bray-Curtis dissimilarity to our transformed data.
 
-We visualized ordination plots of the samples in our dataset, as well as of the distribution of taxa present in each sample (Figure 3.2).
-
+We visualized ordination plots of the samples in our dataset, as well as of the distribution of taxa present in each sample (Figure 2.2).
 
 ```{r figure4, fig.cap="Ordination Plots of Samples and of Phyla", out.width = "700px",echo=FALSE}
 include_graphics(path = "figure/figure4.png")
 ```
 
 
-In addition to looking at the specific distribution of phyla for our samples, we can color-code the different datapoints representing each of our samples to determine if there are any obvious clustering patterns based upon the covariates in our metadata. In the following two plots, we visualize vital status and graft source for our patients across all time points (Figures 3.3 and 3.4).
+In addition to looking at the specific distribution of phyla for our samples, we can color-code the different datapoints representing each of our samples to determine if there are any obvious clustering patterns based upon the covariates in our metadata. In the following two plots, we visualize vital status and graft source for our patients across all time points (Figures 2.3 and 2.4).
 
 
 ```{r figure5, fig.cap="Ordination Plot of Samples, colored by Vital Status", out.width = "700px",echo=FALSE}
@@ -133,7 +132,7 @@ include_graphics(path = "figure/figure6.png")
 
 While these visualizations revealed some information into the distributions of bacteria in our samples, we failed to see any obvious trends across our categories. Another key issue with our plots is that we were unable to clearly identify how a single patient's sample would change over time. To quantify the dynamics of a patient's microbiome in our ordination plot, we devised two different summary statistics: maximum distance and last distance.
 
-We began by creating a Scree plot to determine the contributions of our different principal coordinate axes (Figure 3.5).
+We began by creating a Scree plot to determine the contributions of our different principal coordinate axes (Figure 2.5).
 
 
 ```{r figure7, fig.cap="Scree Plot of Contributions from PCoA Axes", out.width = "700px",echo=FALSE}

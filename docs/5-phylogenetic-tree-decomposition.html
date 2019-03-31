@@ -5,11 +5,11 @@
 
   <meta charset="UTF-8">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
-  <title>Chapter 6 Phylogenetic Tree Decomposition | Statistical Analysis of the Human Gut Microbiome</title>
-  <meta name="description" content="Chapter 6 Phylogenetic Tree Decomposition | Statistical Analysis of the Human Gut Microbiome">
+  <title>Chapter 5 Phylogenetic Tree Decomposition | Statistical Analysis of the Human Gut Microbiome</title>
+  <meta name="description" content="Chapter 5 Phylogenetic Tree Decomposition | Statistical Analysis of the Human Gut Microbiome">
   <meta name="generator" content="bookdown  and GitBook 2.6.7">
 
-  <meta property="og:title" content="Chapter 6 Phylogenetic Tree Decomposition | Statistical Analysis of the Human Gut Microbiome" />
+  <meta property="og:title" content="Chapter 5 Phylogenetic Tree Decomposition | Statistical Analysis of the Human Gut Microbiome" />
   <meta property="og:type" content="book" />
   
   
@@ -17,7 +17,7 @@
   
 
   <meta name="twitter:card" content="summary" />
-  <meta name="twitter:title" content="Chapter 6 Phylogenetic Tree Decomposition | Statistical Analysis of the Human Gut Microbiome" />
+  <meta name="twitter:title" content="Chapter 5 Phylogenetic Tree Decomposition | Statistical Analysis of the Human Gut Microbiome" />
   
   
   
@@ -31,7 +31,7 @@
   <meta name="apple-mobile-web-app-status-bar-style" content="black">
   
   
-<link rel="prev" href="5-linear-regression-on-summary-statistics.html">
+<link rel="prev" href="4-linear-regression-on-summary-statistics.html">
 <link rel="next" href="conclusion.html">
 <script src="libs/jquery-2.2.3/jquery.min.js"></script>
 <link href="libs/gitbook-2.6.7/css/style.css" rel="stylesheet" />
@@ -65,12 +65,12 @@
 <li><a href="./"></a></li>
 <li class="divider"></li>
 <li class="chapter" data-level="" data-path="index.html"><a href="index.html"><i class="fa fa-check"></i>Abstract</a></li>
-<li class="chapter" data-level="1" data-path="1-introduction.html"><a href="1-introduction.html"><i class="fa fa-check"></i><b>1</b> Introduction</a></li>
-<li class="chapter" data-level="2" data-path="2-pre-processing-of-microbiome-sequencing-data.html"><a href="2-pre-processing-of-microbiome-sequencing-data.html"><i class="fa fa-check"></i><b>2</b> Pre-processing of Microbiome Sequencing Data</a></li>
-<li class="chapter" data-level="3" data-path="3-post-processing-and-filtration-of-the-sequence-table.html"><a href="3-post-processing-and-filtration-of-the-sequence-table.html"><i class="fa fa-check"></i><b>3</b> Post-processing and Filtration of the Sequence Table</a></li>
-<li class="chapter" data-level="4" data-path="4-interactive-visualizations-in-tableau.html"><a href="4-interactive-visualizations-in-tableau.html"><i class="fa fa-check"></i><b>4</b> Interactive Visualizations in Tableau</a></li>
-<li class="chapter" data-level="5" data-path="5-linear-regression-on-summary-statistics.html"><a href="5-linear-regression-on-summary-statistics.html"><i class="fa fa-check"></i><b>5</b> Linear Regression on Summary Statistics</a></li>
-<li class="chapter" data-level="6" data-path="6-phylogenetic-tree-decomposition.html"><a href="6-phylogenetic-tree-decomposition.html"><i class="fa fa-check"></i><b>6</b> Phylogenetic Tree Decomposition</a></li>
+<li class="chapter" data-level="" data-path="introduction.html"><a href="introduction.html"><i class="fa fa-check"></i>Introduction</a></li>
+<li class="chapter" data-level="1" data-path="1-pre-processing-of-microbiome-sequencing-data.html"><a href="1-pre-processing-of-microbiome-sequencing-data.html"><i class="fa fa-check"></i><b>1</b> Pre-processing of Microbiome Sequencing Data</a></li>
+<li class="chapter" data-level="2" data-path="2-post-processing-and-filtration-of-the-sequence-table.html"><a href="2-post-processing-and-filtration-of-the-sequence-table.html"><i class="fa fa-check"></i><b>2</b> Post-processing and Filtration of the Sequence Table</a></li>
+<li class="chapter" data-level="3" data-path="3-interactive-visualizations-in-tableau.html"><a href="3-interactive-visualizations-in-tableau.html"><i class="fa fa-check"></i><b>3</b> Interactive Visualizations in Tableau</a></li>
+<li class="chapter" data-level="4" data-path="4-linear-regression-on-summary-statistics.html"><a href="4-linear-regression-on-summary-statistics.html"><i class="fa fa-check"></i><b>4</b> Linear Regression on Summary Statistics</a></li>
+<li class="chapter" data-level="5" data-path="5-phylogenetic-tree-decomposition.html"><a href="5-phylogenetic-tree-decomposition.html"><i class="fa fa-check"></i><b>5</b> Phylogenetic Tree Decomposition</a></li>
 <li class="chapter" data-level="" data-path="conclusion.html"><a href="conclusion.html"><i class="fa fa-check"></i>Conclusion</a></li>
 <li class="chapter" data-level="" data-path="references.html"><a href="references.html"><i class="fa fa-check"></i>References</a></li>
 <li class="divider"></li>
@@ -93,7 +93,7 @@
 
             <section class="normal" id="section-">
 <div id="phylogenetic-tree-decomposition" class="section level1">
-<h1><span class="header-section-number">Chapter 6</span> Phylogenetic Tree Decomposition</h1>
+<h1><span class="header-section-number">Chapter 5</span> Phylogenetic Tree Decomposition</h1>
 <p>There are several aspects of microbiome data that make statistical analysis difficult. Potential issues include high dimensionality with large numbers of OTUs, sparsity due to small OTU counts, and potential correlations among counts of different OTUs. These aspects can cause problems when attempting to perform inference on the abundances of taxonomic units. Furthermore, simply analyzing regression results for a single OTU at a time fails to take into account the dependencies between different bacterial populations in the gut.</p>
 <p>To address these concerns, we applied a Phylogenetic Tree Decomposition to our microbiome data. This methodology replicates concepts introduced in PhyloScan (Tang 2018) and DTM (Wang 2017). Using a phylogenetic tree can summarize the evolutionary relationships amongst the OTUs, allowing us to have a better context of their functional relationships and enriching the overall model fitting process.</p>
 <p>With our completed filtration of our samples, we constructed a phylogenetic tree to represent the relations between our samples. We used the DECIPHER package in R to first perform multiple-alignment on the sequences in our ASV sequence table (Wright 2016). We then used the R package “phangorn” to fit a UPGMA tree based upon our sequences (Schliep 2018).</p>
@@ -102,14 +102,14 @@
 <div class="figure" style="text-align: center"><span id="fig:figure15"></span>
 <img src="figure/figure15.png" alt="An example of bottom-up propagation of abundance counts" width="700px" />
 <p class="caption">
-Figure 6.1: An example of bottom-up propagation of abundance counts
+Figure 5.1: An example of bottom-up propagation of abundance counts
 </p>
 </div>
 <p>In addition to using calculating counts going left and right at each internal node, code was also written in Python to determine the taxonomic rankings of each internal node, based upon the assigned taxonomies from the RDP for each ASV column in the sequence table. Figure 6.2 provides a smaller example of this propagation process.</p>
 <div class="figure" style="text-align: center"><span id="fig:figure16"></span>
 <img src="figure/figure16.png" alt="An example of bottom-up propagation of Taxonomies" width="700px" />
 <p class="caption">
-Figure 6.2: An example of bottom-up propagation of Taxonomies
+Figure 5.2: An example of bottom-up propagation of Taxonomies
 </p>
 </div>
 <p>With calculated counts and taxonomies for each of the internal nodes of our phylogenetic tree, we then applied a logit mixed-effect binomial model to each one, using the “glmer” function of the R “lme4” package (Bates 2015). At each node, we had 370 observations after filtration for missing values. There were a total of 129 different patients in our dataset. We incorporated a random effect for patient ID, and a nested random effect within patientID for sampleDate. We also included fixed effects for Batch number, transplant Age, gender, ethnicity, diagnosis, transplant type, graft source, vital status, care environment, presence of acute graft v. host disease, presence of chronic graft v. host disease, ANC500 level, and “preOrPost,” telling us if the first sample was taken before or after the transplant date.</p>
@@ -237,7 +237,7 @@ Figure 6.2: An example of bottom-up propagation of Taxonomies
           </div>
         </div>
       </div>
-<a href="5-linear-regression-on-summary-statistics.html" class="navigation navigation-prev " aria-label="Previous page"><i class="fa fa-angle-left"></i></a>
+<a href="4-linear-regression-on-summary-statistics.html" class="navigation navigation-prev " aria-label="Previous page"><i class="fa fa-angle-left"></i></a>
 <a href="conclusion.html" class="navigation navigation-next " aria-label="Next page"><i class="fa fa-angle-right"></i></a>
     </div>
   </div>

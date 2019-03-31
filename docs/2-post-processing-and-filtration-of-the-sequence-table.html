@@ -1,0 +1,401 @@
+<!DOCTYPE html>
+<html >
+
+<head>
+
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <title>Chapter 2 Post-processing and Filtration of the Sequence Table | Statistical Analysis of the Human Gut Microbiome</title>
+  <meta name="description" content="Chapter 2 Post-processing and Filtration of the Sequence Table | Statistical Analysis of the Human Gut Microbiome">
+  <meta name="generator" content="bookdown  and GitBook 2.6.7">
+
+  <meta property="og:title" content="Chapter 2 Post-processing and Filtration of the Sequence Table | Statistical Analysis of the Human Gut Microbiome" />
+  <meta property="og:type" content="book" />
+  
+  
+  
+  
+
+  <meta name="twitter:card" content="summary" />
+  <meta name="twitter:title" content="Chapter 2 Post-processing and Filtration of the Sequence Table | Statistical Analysis of the Human Gut Microbiome" />
+  
+  
+  
+
+<meta name="author" content="Vivek Sriram">
+
+
+
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="apple-mobile-web-app-capable" content="yes">
+  <meta name="apple-mobile-web-app-status-bar-style" content="black">
+  
+  
+<link rel="prev" href="1-pre-processing-of-microbiome-sequencing-data.html">
+<link rel="next" href="3-interactive-visualizations-in-tableau.html">
+<script src="libs/jquery-2.2.3/jquery.min.js"></script>
+<link href="libs/gitbook-2.6.7/css/style.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-table.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-bookdown.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-highlight.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-search.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-fontsettings.css" rel="stylesheet" />
+
+
+
+
+
+
+
+
+
+
+</head>
+
+<body>
+
+
+
+  <div class="book without-animation with-summary font-size-2 font-family-1" data-basepath=".">
+
+    <div class="book-summary">
+      <nav role="navigation">
+
+<ul class="summary">
+<li><a href="./"></a></li>
+<li class="divider"></li>
+<li class="chapter" data-level="" data-path="index.html"><a href="index.html"><i class="fa fa-check"></i>Abstract</a></li>
+<li class="chapter" data-level="" data-path="introduction.html"><a href="introduction.html"><i class="fa fa-check"></i>Introduction</a></li>
+<li class="chapter" data-level="1" data-path="1-pre-processing-of-microbiome-sequencing-data.html"><a href="1-pre-processing-of-microbiome-sequencing-data.html"><i class="fa fa-check"></i><b>1</b> Pre-processing of Microbiome Sequencing Data</a></li>
+<li class="chapter" data-level="2" data-path="2-post-processing-and-filtration-of-the-sequence-table.html"><a href="2-post-processing-and-filtration-of-the-sequence-table.html"><i class="fa fa-check"></i><b>2</b> Post-processing and Filtration of the Sequence Table</a></li>
+<li class="chapter" data-level="3" data-path="3-interactive-visualizations-in-tableau.html"><a href="3-interactive-visualizations-in-tableau.html"><i class="fa fa-check"></i><b>3</b> Interactive Visualizations in Tableau</a></li>
+<li class="chapter" data-level="4" data-path="4-linear-regression-on-summary-statistics.html"><a href="4-linear-regression-on-summary-statistics.html"><i class="fa fa-check"></i><b>4</b> Linear Regression on Summary Statistics</a></li>
+<li class="chapter" data-level="5" data-path="5-phylogenetic-tree-decomposition.html"><a href="5-phylogenetic-tree-decomposition.html"><i class="fa fa-check"></i><b>5</b> Phylogenetic Tree Decomposition</a></li>
+<li class="chapter" data-level="" data-path="conclusion.html"><a href="conclusion.html"><i class="fa fa-check"></i>Conclusion</a></li>
+<li class="chapter" data-level="" data-path="references.html"><a href="references.html"><i class="fa fa-check"></i>References</a></li>
+<li class="divider"></li>
+<li><a href="https://github.com/rstudio/bookdown" target="blank">Published with bookdown</a></li>
+</ul>
+
+      </nav>
+    </div>
+
+    <div class="book-body">
+      <div class="body-inner">
+        <div class="book-header" role="navigation">
+          <h1>
+            <i class="fa fa-circle-o-notch fa-spin"></i><a href="./">Statistical Analysis of the Human Gut Microbiome</a>
+          </h1>
+        </div>
+
+        <div class="page-wrapper" tabindex="-1" role="main">
+          <div class="page-inner">
+
+            <section class="normal" id="section-">
+<div id="post-processing-and-filtration-of-the-sequence-table" class="section level1">
+<h1><span class="header-section-number">Chapter 2</span> Post-processing and Filtration of the Sequence Table</h1>
+<p>The ASV table produced by Alex Sibley consisted of seven different bathces of stool samples produced by MSK. These distinct tables were merged into a single ASV table, with columns representing different ASVs, rows representing sampling, and counts in the table representing the abundance of each ASV in each of our samples.</p>
+<p>DADA2 was used to remove chimeric sequences from the sequence table by comparing each inferred sequence to others in the table, and removing those that could be reproduced by stitching together two more abundant sequences. The DADA2 naive Bayesian classifier was then used to compare sequence variants to the RDP v14 training set of classified sequences (Cole 2013). Through this process, each ASV column is assigned a full taxonomy, including Kingdom, Phylum, Class, Order, Family, and Genus.</p>
+<p>In addition to assigning taxonomies, we associated deidentified metadata to our stool samples, also provided to us by Memorial Sloan Kettering. The metadata were imported, cleaned, and subsetted to match our ASV table. Finally, the R “phyloseq” package was applied to combine our ASV feature table, our metadata, and our sequence taxonomies of our amplicon sequencing experiment into a single object (McMurdle 2013).</p>
+<p>With our full phyloseq object, we then used our assigned taxonomies as a filtering criterion on our data. This filtration process helps us to avoid spending unneeded time on taxa that are seen too infrequently and eliminates extra noise by deleting taxa that are simply artifacts of data collection.</p>
+<p>We created a table of read counts for each Phylum present in our dataset.</p>
+<p>
+<table style="width:62%;">
+<caption>Correlation of Inheritance Factors for Parents and Child</caption>
+<colgroup>
+<col width="41%" />
+<col width="20%" />
+</colgroup>
+<thead>
+<tr class="header">
+<th align="center">Phyla</th>
+<th align="center">Read Counts</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td align="center">Actinobacteria</td>
+<td align="center">3864</td>
+</tr>
+<tr class="even">
+<td align="center">Armatimonadetes</td>
+<td align="center">1</td>
+</tr>
+<tr class="odd">
+<td align="center">Bacteroidetes</td>
+<td align="center">3375</td>
+</tr>
+<tr class="even">
+<td align="center">Chlamydiae</td>
+<td align="center">3</td>
+</tr>
+<tr class="odd">
+<td align="center">Cyanobacteria/Chloroplast</td>
+<td align="center">15</td>
+</tr>
+<tr class="even">
+<td align="center">Deferribacteres</td>
+<td align="center">1</td>
+</tr>
+<tr class="odd">
+<td align="center">Deinococcus-Thermus</td>
+<td align="center">3</td>
+</tr>
+<tr class="even">
+<td align="center">Euryarchaeota</td>
+<td align="center">2</td>
+</tr>
+<tr class="odd">
+<td align="center">Firmicutes</td>
+<td align="center">155578</td>
+</tr>
+<tr class="even">
+<td align="center">Fusobacteria</td>
+<td align="center">19</td>
+</tr>
+<tr class="odd">
+<td align="center">Proteobacteria</td>
+<td align="center">3481</td>
+</tr>
+<tr class="even">
+<td align="center">Spirochaetes</td>
+<td align="center">4</td>
+</tr>
+<tr class="odd">
+<td align="center">Synergistetes</td>
+<td align="center">84</td>
+</tr>
+<tr class="even">
+<td align="center">Tenericutes</td>
+<td align="center">3</td>
+</tr>
+<tr class="odd">
+<td align="center">Verrumicrobia</td>
+<td align="center">8823</td>
+</tr>
+<tr class="even">
+<td align="center">Woesearchaeota</td>
+<td align="center">1578</td>
+</tr>
+<tr class="odd">
+<td align="center"><NA></td>
+<td align="center">211134</td>
+</tr>
+</tbody>
+</table>
+</p>
+<p>Many of our features are annotated with a phylum of “NA,” potentially indicating that they are artifacts. However, due to the fact that databases such as the RDP are often far from complete, filtering out all of these datapoints was considered to be too stringent. As a result, they were kept in our dataset.</p>
+<p>We also explored feature prevalence in our dataset. Feature prevalence is defined to be the number of samples in which a taxum appears at least once. We computed the average and total prevalences of the features in each phylum to determine if there were any phyla that consisted mostly of low-prevalence features.</p>
+<p>
+<table>
+<caption>Feature Prevalence of Phyla in our Dataset</caption>
+<colgroup>
+<col width="38%" />
+<col width="30%" />
+<col width="30%" />
+</colgroup>
+<thead>
+<tr class="header">
+<th align="center">Phylum</th>
+<th align="center">Average Abundance</th>
+<th align="center">Total Abundance</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td align="center">Actinobacteria</td>
+<td align="center">2.612319</td>
+<td align="center">10094</td>
+</tr>
+<tr class="even">
+<td align="center">Armatimonadetes</td>
+<td align="center">1.000000</td>
+<td align="center">1</td>
+</tr>
+<tr class="odd">
+<td align="center">Bacteroidetes</td>
+<td align="center">3.135111</td>
+<td align="center">10581</td>
+</tr>
+<tr class="even">
+<td align="center">Chlamydiae</td>
+<td align="center">1.000000</td>
+<td align="center">3</td>
+</tr>
+<tr class="odd">
+<td align="center">Cyanobacteria/Chloroplast</td>
+<td align="center">3.133333</td>
+<td align="center">47</td>
+</tr>
+<tr class="even">
+<td align="center">Deferribacteres</td>
+<td align="center">7.000000</td>
+<td align="center">7</td>
+</tr>
+<tr class="odd">
+<td align="center">Deinococcus-Thermus</td>
+<td align="center">2.333333</td>
+<td align="center">7</td>
+</tr>
+<tr class="even">
+<td align="center">Euryarchaeota</td>
+<td align="center">25.000000</td>
+<td align="center">50</td>
+</tr>
+<tr class="odd">
+<td align="center">Firmicutes</td>
+<td align="center">1.952770</td>
+<td align="center">303808</td>
+</tr>
+<tr class="even">
+<td align="center">Fusobacteria</td>
+<td align="center">4.473684</td>
+<td align="center">85</td>
+</tr>
+<tr class="odd">
+<td align="center">Proteobacteria</td>
+<td align="center">3.381212</td>
+<td align="center">11770</td>
+</tr>
+<tr class="even">
+<td align="center">Spirochaetes</td>
+<td align="center">1.500000</td>
+<td align="center">6</td>
+</tr>
+<tr class="odd">
+<td align="center">Synergistetes</td>
+<td align="center">1.880952</td>
+<td align="center">158</td>
+</tr>
+<tr class="even">
+<td align="center">Tenericutes</td>
+<td align="center">2.333333</td>
+<td align="center">7</td>
+</tr>
+<tr class="odd">
+<td align="center">Verrucomicrobia</td>
+<td align="center">1.706562</td>
+<td align="center">15057</td>
+</tr>
+<tr class="even">
+<td align="center">Woesearchaeota</td>
+<td align="center">3.147022</td>
+<td align="center">4966</td>
+</tr>
+<tr class="odd">
+<td align="center"><NA></td>
+<td align="center">1.977450</td>
+<td align="center">417507</td>
+</tr>
+</tbody>
+</table>
+</p>
+<p>Through this process, we dropped the following phyla from our dataset: Armatimonadetes, Chlamydiae, Deferribacteres, Deinococcus-Thermus, Spirochaetes, and Tenericutes</p>
+<p>The previous filtration steps required our taxonomic annotations to properly work. Without taxonomies, we can use prevalence filtering as a form of unsupervised filtration to further streamline our data. We plotted graphs of prevalence against total abundance for each phylum in an effort to identify an appropriate prevalence threshold (Figure 3.1).</p>
+<div class="figure" style="text-align: center"><span id="fig:figure3"></span>
+<img src="figure/figure3.png" alt="Feature Prevalence of Phyla against Total Abundance in our Dataset" width="700px" />
+<p class="caption">
+Figure 2.1: Feature Prevalence of Phyla against Total Abundance in our Dataset
+</p>
+</div>
+<p>We failed to see see any real separation in our plots, so we established an arbitrary prevalence threshold of 1%.</p>
+<p>In order to account for differences in library size, variance, and scale, we had to use relative abundances instead of total abundances. We transformed our data from counts to frequencies, and also applied a log transformation. We then applied Principal Coordinates Analysis (PCoA) with Bray-Curtis dissimilarity to our transformed data.</p>
+<p>We visualized ordination plots of the samples in our dataset, as well as of the distribution of taxa present in each sample (Figure 3.2).</p>
+<div class="figure" style="text-align: center"><span id="fig:figure4"></span>
+<img src="figure/figure4.png" alt="Ordination Plots of Samples and of Phyla" width="700px" />
+<p class="caption">
+Figure 2.2: Ordination Plots of Samples and of Phyla
+</p>
+</div>
+<p>In addition to looking at the specific distribution of phyla for our samples, we can color-code the different datapoints representing each of our samples to determine if there are any obvious clustering patterns based upon the covariates in our metadata. In the following two plots, we visualize vital status and graft source for our patients across all time points (Figures 3.3 and 3.4).</p>
+<div class="figure" style="text-align: center"><span id="fig:figure5"></span>
+<img src="figure/figure5.png" alt="Ordination Plot of Samples, colored by Vital Status" width="700px" />
+<p class="caption">
+Figure 2.3: Ordination Plot of Samples, colored by Vital Status
+</p>
+</div>
+<div class="figure" style="text-align: center"><span id="fig:figure6"></span>
+<img src="figure/figure6.png" alt="Ordination Plot of Samples, colored by Graft Source" width="700px" />
+<p class="caption">
+Figure 2.4: Ordination Plot of Samples, colored by Graft Source
+</p>
+</div>
+<p>While these visualizations revealed some information into the distributions of bacteria in our samples, we failed to see any obvious trends across our categories. Another key issue with our plots is that we were unable to clearly identify how a single patient’s sample would change over time. To quantify the dynamics of a patient’s microbiome in our ordination plot, we devised two different summary statistics: maximum distance and last distance.</p>
+<p>We began by creating a Scree plot to determine the contributions of our different principal coordinate axes (Figure 3.5).</p>
+<div class="figure" style="text-align: center"><span id="fig:figure7"></span>
+<img src="figure/figure7.png" alt="Scree Plot of Contributions from PCoA Axes" width="700px" />
+<p class="caption">
+Figure 2.5: Scree Plot of Contributions from PCoA Axes
+</p>
+</div>
+<p>Analyzing the plot and computing the contributions of our axes, we see that the first 17 axes constitute the the majority of contributions from our 460 total axes. So, we used these axes as part of our distance metrics; we calculated the distance from one sample to another by taking the square root of the sum of the squared differences of each of our seventeen components.</p>
+<p>Given an individual patient in our dataset, maximum distance is defined as the furthest distance in the ordination plot traveled from the patient’s earliest point. Last distance is defined as the distance between the individual’s earliest and latest point in the ordination plot. A potential future avenue to explore in this scenario is to scale principal components relative to one another instead of simply using the first seventeen, in an effort to get a better quantification of our two metrics. With our processed dataset and ordination plot, and our new summary statistics, we turned to the visualization application “Tableau.”</p>
+
+</div>
+            </section>
+
+          </div>
+        </div>
+      </div>
+<a href="1-pre-processing-of-microbiome-sequencing-data.html" class="navigation navigation-prev " aria-label="Previous page"><i class="fa fa-angle-left"></i></a>
+<a href="3-interactive-visualizations-in-tableau.html" class="navigation navigation-next " aria-label="Next page"><i class="fa fa-angle-right"></i></a>
+    </div>
+  </div>
+<script src="libs/gitbook-2.6.7/js/app.min.js"></script>
+<script src="libs/gitbook-2.6.7/js/lunr.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-search.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-sharing.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-fontsettings.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-bookdown.js"></script>
+<script src="libs/gitbook-2.6.7/js/jquery.highlight.js"></script>
+<script>
+gitbook.require(["gitbook"], function(gitbook) {
+gitbook.start({
+"sharing": {
+"github": false,
+"facebook": true,
+"twitter": true,
+"google": false,
+"linkedin": false,
+"weibo": false,
+"instapaper": false,
+"vk": false,
+"all": ["facebook", "google", "twitter", "linkedin", "weibo", "instapaper"]
+},
+"fontsettings": {
+"theme": "white",
+"family": "sans",
+"size": 2
+},
+"edit": {
+"link": null,
+"text": null
+},
+"history": {
+"link": null,
+"text": null
+},
+"download": [["thesis.pdf", "PDF"], ["thesis.epub", "EPUB"], ["thesis.docx", "Word"]],
+"toc": {
+"collapse": "section"
+}
+});
+});
+</script>
+
+<!-- dynamically load mathjax for compatibility with self-contained -->
+<script>
+  (function () {
+    var script = document.createElement("script");
+    script.type = "text/javascript";
+    var src = "";
+    if (src === "" || src === "true") src = "https://mathjax.rstudio.com/latest/MathJax.js?config=TeX-MML-AM_CHTML";
+    if (location.protocol !== "file:" && /^https?:/.test(src))
+      src = src.replace(/^https?:/, '');
+    script.src = src;
+    document.getElementsByTagName("head")[0].appendChild(script);
+  })();
+</script>
+</body>
+
+</html>
