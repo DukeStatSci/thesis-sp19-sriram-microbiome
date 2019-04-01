@@ -1,6 +1,6 @@
 # Introduction {-}
 
-A large variety of microorganisms live within the human body, constituting the "human microbiome." Despite representing on average just 2% of the human body's mass, these microbes play an important role in human health, outnumbering human cells at a ratio of almost ten to one (NIH 2012). While they often serve mutualistic roles, many microorganisms are also associated with various kinds of disease.
+A large variety of microorganisms live within the human body, constituting the "human microbiome." Despite representing on average just 2% of the human body's mass, these microbes play an important role in human health, outnumbering human cells at a ratio of almost ten to one [@NIH2009]. While they often serve mutualistic roles, many microorganisms are also associated with various kinds of disease.
 
 In collaboration with Dr. Tony Sung and Alex Sibley in the Duke University School of Medicine, we made use of data collected from the Memorial Sloan Kettering Cancer Center on patients recovering from blood cancer. These individuals had all been diagnosed with some form of leukemia, and had then been provided with stem cell transplants in an effort to combat the cancerous blood cells. These individuals also recovered after their transplants in different locations, including houses, apartments, and clinics.
 
