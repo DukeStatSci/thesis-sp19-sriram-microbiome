@@ -33,50 +33,17 @@ $\epsilon_{i}^{(A)} = N(0, \sigma_{\epsilon}^{2})$
 
 $for \ i = 1,...,370$
 
-In most cases, the regression model would fail to converge and provide meaningful results. However, there were twenty-two different internal nodes for which our model finished running and identified different variables to be significant. There were also several instances where Batch effects were noticed, including four nodes where the only significant variable was Batch number. The eighteen nodes that identified significant variables other than Batch are detailed in the table below, providing their taxonomy, the taxonomies of their children, and the significant covariates at their node.
 
-<p>
-----------------------------------------------------------------------------------
- Taxonomy                    Children's Taxonomies                                  Significant Variables
---------------------------- ------------------------------------------------------ ---------------------------
- None/NA                     Kingdom/Woesearchaeota, None/NA                        Diagnosis(MDS, Other), Graft Source(Cord, PBPC), Care Environment(2), ANC500
-  
- Domain/Bacteria             Domain/Bacteria, Domain/Bacteria                       Gender(M), Hispanic(Yes), Transplant Type(Auto), Care Environment(2), preOrPost(pre)
-  
- Phylum/Firmicutes           Class/Selenomonadales, Kingdom/Firmicutes              Gender(M), Hispanic(Unk), Care Environment(2), preOrPost(pre)  
- 
- Domain/Bacteria             Species/Gemella, Domain/Bacteria                       Transplant Age, Gender(M), Hispanic(Unk), Diagnosis(MDS), Transplant Type(Auto), preOrPost(pre), CGVHD
-  
- Order/Ruminococcaceae       Order/Ruminococcaceae, Order/Ruminococcaceae           Hispanic(Yes), Graft Source(BM/PBPC)
-  
- Domain/Bacteria             Domain/Bacteria, Kingdom/Firmicutes                    Hispanic(Yes), AGVHD
-  
- Kingdom/Firmicutes          Kingdom/Firmicutes, Order/Erysipelotrichaceae          Graft Source(Cord Blood), Care Environment(2), ANC500
-  
- Order/Erysipelotrichaceae   Order/Erysipelotrichaceae, Order/Erysipelotrichaceae   Care Environment(3)  
-  
- Class/Lactobacillales       Class/Lactobacillales, Class/Lactobacillales           Hispanic(Yes), preOrPost(pre)
-  
- Kingdom/Firmicutes          Order/Erysipelotrichaceae, Kingdom/Firmicutes          preOrPost(pre)
-  
- Order/Lactobacillaceae      Family/Lactobacillus, Order/Lactobacillaceae           Transplant Type(Auto), ANC500
-  
- Family/Streptococcus        Family/Streptococcus, Family/Streptococcus             Diagnosis(Other), CGVHD
-  
- Family/Streptococcus        Family/Streptococcus, Family/Streptococcus             Transplant Age, Gender(M), Diagnosis(MDS, Other), Graft Source(Cord Blood)
-  
- Family/Bacteroides          Family/Bacteroides, Family/Bacteroides                 Transplant Age, Hispanic(Unknown), Transplant Type(Allo-DLI)
+In most cases, the regression model would fail to converge and provide meaningful results. However, there were twenty-two different internal nodes for which our model finished running and identified different variables to be significant.
 
- Family/Streptococcus        Family/Streptococcus, Family/Streptococcus             Graft Source(BM/PBPC, PBPC), CGVHD         
+Due to the fact that we had performed multiple tests, we applied a Bonferroni correction to our 22 nodes, requiring a p-value smaller than $.05/22 = 2.27 * 10^{-3}.$ In addition to identifying several Batch effects, we found significant variables for five of our nodes, with three significant variables found for the root node of our tree, and a single significant variable found for each of the other nodes. Figure \@ref(fig:figure17) displays a table of the results of our phylogenetic tree decomposition, including the node number (higher numbers appear lower in the tree), the node taxonomy, the taxonomy of the children, the variable identified to be significant, and the estimate and p-values.
 
- Family/Bifidobacterium       Family/Bifidobacterium, Family/Bifidobacterium        Gender(M), Hispanic(Yes), Transplant Type(Auto), Graft Source(Cord Blood, PBPC), AGVHD
-    
- Family/Streptococcus         Family/Streptococcus, Family/Streptococcus            AGVHD
-      
- Family/Bacteroides           Family/Bacteroides, Family/Bacteroides                Diagnosis(Other), Transplant Type(Auto), Care Environment(2)
-------------- ----------------- --------------------- ----------------------------------------------------------
-Table: Significant Variables from Regression on Internal Nodes 
+```{r figure17, fig.cap="Significant Results from Phylogenetic Tree Decomposition after Bonferroni Correction", out.width = "700px",echo=FALSE}
+include_graphics(path = "figure/figure17.png")
+```
 
-</p>
+These results give us a bit of insight into the relationship between taxonomies and our covariates. For instance, interpreting the result for node 3541, we can say the following:
 
-Common variables identified across taxonomic rankings include ethnicity, graft source, care environment, diagnosis, transplant type, and presence of acute and chronic graft vs. host disease.
+At this node, for a given stool sample and patient, and holding all else constant, having chronic graft versus host disease changes the odds for an ASV in the sample to belong in the more refined Lactobacillus Family compared to the more general Lactobacillaceae Order by a multiplicative factor of roughly 3.06 (confidence interval of [1.64, 5.81]).
+
+Indeed, this output suggests a potential connection between CGVHD and microbiota in the lactobacillus family. We see that results for other nodes are a bit more difficult to interpret, because of the fact that parent and children have the same taxonomic classifications. Nevertheless, Phylogenetic Tree Decomposition offers a unique way to consider the effects of various covariates across different taxonomic levels. If we have varying taxonomies between the two children of a node, then being able to comprehend the odds of going left versus right given a certain value for a covariate will have greater meaning. If we also had higher counts in our phylogenetic tree, which would allow for the analysis of full chains of internal nodes, then we could better identify the distributions of counts across taxonomies.

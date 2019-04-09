@@ -118,117 +118,17 @@ Figure 5.2: An example of bottom-up propagation of Taxonomies
 <p><span class="math inline">\(\gamma_{i}^{(A)} = N(0, \sigma_{\gamma}^{2})\)</span></p>
 <p><span class="math inline">\(\epsilon_{i}^{(A)} = N(0, \sigma_{\epsilon}^{2})\)</span></p>
 <p><span class="math inline">\(for \ i = 1,...,370\)</span></p>
-<p>In most cases, the regression model would fail to converge and provide meaningful results. However, there were twenty-two different internal nodes for which our model finished running and identified different variables to be significant. There were also several instances where Batch effects were noticed, including four nodes where the only significant variable was Batch number. The eighteen nodes that identified significant variables other than Batch are detailed in the table below, providing their taxonomy, the taxonomies of their children, and the significant covariates at their node.</p>
-<p>
-<table>
-<caption>Significant Variables from Regression on Internal Nodes</caption>
-<colgroup>
-<col width="25%" />
-<col width="50%" />
-<col width="24%" />
-</colgroup>
-<thead>
-<tr class="header">
-<th align="center">Taxonomy</th>
-<th align="center">Children’s Taxonomies</th>
-<th align="center">Significant Variables</th>
-</tr>
-</thead>
-<tbody>
-<tr class="odd">
-<td align="center">None/NA</td>
-<td align="center">Kingdom/Woesearchaeota, None/NA</td>
-<td align="center">Diagnosis(MDS, Other), Graft Source(Cord, PBPC), Care Environment(2), ANC500</td>
-</tr>
-<tr class="even">
-<td align="center">Domain/Bacteria</td>
-<td align="center">Domain/Bacteria, Domain/Bacteria</td>
-<td align="center">Gender(M), Hispanic(Yes), Transplant Type(Auto), Care Environment(2), preOrPost(pre)</td>
-</tr>
-<tr class="odd">
-<td align="center">Phylum/Firmicutes</td>
-<td align="center">Class/Selenomonadales, Kingdom/Firmicutes</td>
-<td align="center">Gender(M), Hispanic(Unk), Care Environment(2), preOrPost(pre)</td>
-</tr>
-<tr class="even">
-<td align="center">Domain/Bacteria</td>
-<td align="center">Species/Gemella, Domain/Bacteria</td>
-<td align="center">Transplant Age, Gender(M), Hispanic(Unk), Diagnosis(MDS), Transplant Type(Auto), preOrPost(pre), CGVHD</td>
-</tr>
-<tr class="odd">
-<td align="center">Order/Ruminococcaceae</td>
-<td align="center">Order/Ruminococcaceae, Order/Ruminococcaceae</td>
-<td align="center">Hispanic(Yes), Graft Source(BM/PBPC)</td>
-</tr>
-<tr class="even">
-<td align="center">Domain/Bacteria</td>
-<td align="center">Domain/Bacteria, Kingdom/Firmicutes</td>
-<td align="center">Hispanic(Yes), AGVHD</td>
-</tr>
-<tr class="odd">
-<td align="center">Kingdom/Firmicutes</td>
-<td align="center">Kingdom/Firmicutes, Order/Erysipelotrichaceae</td>
-<td align="center">Graft Source(Cord Blood), Care Environment(2), ANC500</td>
-</tr>
-<tr class="even">
-<td align="center">Order/Erysipelotrichaceae</td>
-<td align="center">Order/Erysipelotrichaceae, Order/Erysipelotrichaceae</td>
-<td align="center">Care Environment(3)</td>
-</tr>
-<tr class="odd">
-<td align="center">Class/Lactobacillales</td>
-<td align="center">Class/Lactobacillales, Class/Lactobacillales</td>
-<td align="center">Hispanic(Yes), preOrPost(pre)</td>
-</tr>
-<tr class="even">
-<td align="center">Kingdom/Firmicutes</td>
-<td align="center">Order/Erysipelotrichaceae, Kingdom/Firmicutes</td>
-<td align="center">preOrPost(pre)</td>
-</tr>
-<tr class="odd">
-<td align="center">Order/Lactobacillaceae</td>
-<td align="center">Family/Lactobacillus, Order/Lactobacillaceae</td>
-<td align="center">Transplant Type(Auto), ANC500</td>
-</tr>
-<tr class="even">
-<td align="center">Family/Streptococcus</td>
-<td align="center">Family/Streptococcus, Family/Streptococcus</td>
-<td align="center">Diagnosis(Other), CGVHD</td>
-</tr>
-<tr class="odd">
-<td align="center">Family/Streptococcus</td>
-<td align="center">Family/Streptococcus, Family/Streptococcus</td>
-<td align="center">Transplant Age, Gender(M), Diagnosis(MDS, Other), Graft Source(Cord Blood)</td>
-</tr>
-<tr class="even">
-<td align="center">Family/Bacteroides</td>
-<td align="center">Family/Bacteroides, Family/Bacteroides</td>
-<td align="center">Transplant Age, Hispanic(Unknown), Transplant Type(Allo-DLI)</td>
-</tr>
-<tr class="odd">
-<td align="center">Family/Streptococcus</td>
-<td align="center">Family/Streptococcus, Family/Streptococcus</td>
-<td align="center">Graft Source(BM/PBPC, PBPC), CGVHD</td>
-</tr>
-<tr class="even">
-<td align="center">Family/Bifidobacterium</td>
-<td align="center">Family/Bifidobacterium, Family/Bifidobacterium</td>
-<td align="center">Gender(M), Hispanic(Yes), Transplant Type(Auto), Graft Source(Cord Blood, PBPC), AGVHD</td>
-</tr>
-<tr class="odd">
-<td align="center">Family/Streptococcus</td>
-<td align="center">Family/Streptococcus, Family/Streptococcus</td>
-<td align="center">AGVHD</td>
-</tr>
-<tr class="even">
-<td align="center">Family/Bacteroides</td>
-<td align="center">Family/Bacteroides, Family/Bacteroides</td>
-<td align="center">Diagnosis(Other), Transplant Type(Auto), Care Environment(2)</td>
-</tr>
-</tbody>
-</table>
+<p>In most cases, the regression model would fail to converge and provide meaningful results. However, there were twenty-two different internal nodes for which our model finished running and identified different variables to be significant.</p>
+<p>Due to the fact that we had performed multiple tests, we applied a Bonferroni correction to our 22 nodes, requiring a p-value smaller than <span class="math inline">\(.05/22 = 2.27 * 10^{-3}.\)</span> In addition to identifying several Batch effects, we found significant variables for five of our nodes, with three significant variables found for the root node of our tree, and a single significant variable found for each of the other nodes. Figure <a href="5-phylogenetic-tree-decomposition.html#fig:figure17">5.3</a> displays a table of the results of our phylogenetic tree decomposition, including the node number (higher numbers appear lower in the tree), the node taxonomy, the taxonomy of the children, the variable identified to be significant, and the estimate and p-values.</p>
+<div class="figure" style="text-align: center"><span id="fig:figure17"></span>
+<img src="figure/figure17.png" alt="Significant Results from Phylogenetic Tree Decomposition after Bonferroni Correction" width="700px" />
+<p class="caption">
+Figure 5.3: Significant Results from Phylogenetic Tree Decomposition after Bonferroni Correction
 </p>
-<p>Common variables identified across taxonomic rankings include ethnicity, graft source, care environment, diagnosis, transplant type, and presence of acute and chronic graft vs. host disease.</p>
+</div>
+<p>These results give us a bit of insight into the relationship between taxonomies and our covariates. For instance, interpreting the result for node 3541, we can say the following:</p>
+<p>At this node, for a given stool sample and patient, and holding all else constant, having chronic graft versus host disease changes the odds for an ASV in the sample to belong in the more refined Lactobacillus Family compared to the more general Lactobacillaceae Order by a multiplicative factor of roughly 3.06 (confidence interval of [1.64, 5.81]).</p>
+<p>Indeed, this output suggests a potential connection between CGVHD and microbiota in the lactobacillus family. We see that results for other nodes are a bit more difficult to interpret, because of the fact that parent and children have the same taxonomic classifications. Nevertheless, Phylogenetic Tree Decomposition offers a unique way to consider the effects of various covariates across different taxonomic levels. If we have varying taxonomies between the two children of a node, then being able to comprehend the odds of going left versus right given a certain value for a covariate will have greater meaning. If we also had higher counts in our phylogenetic tree, which would allow for the analysis of full chains of internal nodes, then we could better identify the distributions of counts across taxonomies.</p>
 
 </div>
             </section>
