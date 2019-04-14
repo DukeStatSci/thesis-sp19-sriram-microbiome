@@ -95,88 +95,8 @@
 <div id="linear-regression-on-summary-statistics" class="section level1">
 <h1><span class="header-section-number">Chapter 4</span> Linear Regression on Summary Statistics</h1>
 <p>With the processing and filtration of our data, as well as its visualization in Tableau, we turned to basic linear regressions as well as non-parametric statistical tests to attempt to evaluate how our covariates may be linked to the dynamics of the microbiome.</p>
-<p>Based upon exploratory data analysis, we kept all of our continuous variables untransformed. There were no extremely concerning trends in any of our categorical variables either, so we did not transform them. There was also no need to transform the outcome variable of maximum distance.</p>
-<p>We used lattice plots to search for interaction effects across our categorical variables, as well as boxplots to search for connections between categorical and quantitatie covariates. Identified interactions were included in our baseline model. Backwards selection was then performed using AIC as a scoring criterion.</p>
-<p>For maximum distance as the outcome, our final model with the lowest AIC based on backward selection came out to be as follows:</p>
-<p><span class="math inline">\(maxDistance_{i} = {\beta_{transplantAge}}transplantAge_{i} + {\beta_{AlloDLI}}I(transplantType_{i}=AlloDLI) + {\beta_{Auto}}I(transplantType_{i}=Auto) +{\beta_{Cord}}I(graftSource_{i}=Cord) + {\beta_{PBPC}}I(graftSource_{i}=PBPC) + {\beta_{Dead}}I(vitalStatus_{i}=Dead) + {\beta_{CGVHD}}I(CGVHD_{i}=1)+ {\beta_{anc500}}anc500_{i} + {\beta_{careEnv2}}I(careEnv_{i}=2) + {\beta_{careEnv3}}I(careEnv_{i}=3) + {\beta_{totalTimeSpan}}totalTimeSpan_{i} + {\beta_{vitalStatus/careEnv2}}I(vitalStatus/careEnv2_{i}=1) + {\beta_{vitalStatus/careEnv3}}I(vitalStatus/careEnv3_{i}=1)\)</span></p>
-<p>This model had an AIC of -34.11267, and it identified the following covariates as significant:</p>
-<p>
-<table style="width:83%;">
-<caption>Significant P-values from linear regression with max distance as outcome</caption>
-<colgroup>
-<col width="59%" />
-<col width="23%" />
-</colgroup>
-<thead>
-<tr class="header">
-<th align="center">Covariate</th>
-<th align="center">P-value</th>
-</tr>
-</thead>
-<tbody>
-<tr class="odd">
-<td align="center">Age at Transplant</td>
-<td align="center">0.06975</td>
-</tr>
-<tr class="even">
-<td align="center">Graft Source (Cord Blood)</td>
-<td align="center">0.00173</td>
-</tr>
-<tr class="odd">
-<td align="center">Vital Status (Dead)</td>
-<td align="center">0.07956</td>
-</tr>
-<tr class="even">
-<td align="center">Total Time Span</td>
-<td align="center">0.09064</td>
-</tr>
-<tr class="odd">
-<td align="center">Vital Status(Dead)/Care Environment(2)</td>
-<td align="center">0.06164</td>
-</tr>
-</tbody>
-</table>
-</p>
-<p>Our assumptions for equality of subpopulation standard deviations, as well as that our samples came from a normally distributed population, are fulfilled by the residual plot and normal QQ-plot for our data.</p>
-<p>We repeated the same backward selection process as above, but this time, we used last distance as our outcome variable.</p>
-<p>Based on backward selection according to AIC, we came up with the following model:</p>
-<p><span class="math inline">\(lastDistance_{i} = {\beta_{Black}}I(race_{i}=Black) +{\beta_{MoreThanOne}}I(race_{i}=MoreThanOne) + {\beta_{White}}I(race_{i}=White) + {\beta_{hispanicUnk}}I(hispanic_{i}=Unk) + {\beta_{hispanicYes}}I(hispanic_{i}=Yes)+ {\beta_{Cord}}I(graftSource_{i}=Cord) + {\beta_{PBPC}}I(graftSource_{i}=PBPC) + {\beta_{Dead}}I(vitalStatus_{i}=Dead) + {\beta_{CGVHD}}I(CGVHD_{i}=1) + {\beta_{totalTimeSpan}}totalTimeSpan_{i}\)</span></p>
-<p>Our model had an AIC of -32.37633, and identified the following variables as significant.</p>
-<p>
-<table style="width:65%;">
-<caption>Significant P-values from linear regression with last distance as outcome</caption>
-<colgroup>
-<col width="41%" />
-<col width="23%" />
-</colgroup>
-<thead>
-<tr class="header">
-<th align="center">Covariate</th>
-<th align="center">P-value</th>
-</tr>
-</thead>
-<tbody>
-<tr class="odd">
-<td align="center">Race (Black)</td>
-<td align="center">0.05396</td>
-</tr>
-<tr class="even">
-<td align="center">Graft Source (Cord Blood)</td>
-<td align="center">0.00569</td>
-</tr>
-<tr class="odd">
-<td align="center">Vital Status (Dead)</td>
-<td align="center">0.03409</td>
-</tr>
-<tr class="even">
-<td align="center">Total Time Span</td>
-<td align="center">0.04429</td>
-</tr>
-</tbody>
-</table>
-</p>
-<p>In addition to performing linear regressions for our two summary statistics, we also applied various non-parametric tests, in the hope that they would provide further insight into variables that may be significant for our two metrics. While these tests are not necessarily as useful as regression analyses due to the fact that they do not take into account the context from multiple variables, they can still be potentially informative.</p>
-Performing these tests for our maximum distance metric, we see that graft source appears to be significant.
+<p>We began with various non-parametric tests, because they avoid the distribution assumptions requisite in linear regressions. While these methods limit the amount of information we can consider within a single test, because we consider just one variable instead of several, they are still potentially useful in identifying traits related to our summary statistics.</p>
+<p>Performing these tests for our maximum distance metric, we see that graft source appears to be significant. When we perform these same tests for our last distance metric, we see that none of our variables are significant (Tables 3 and 4).</p>
 <p>
 <table style="width:89%;">
 <caption>P-values from non-parametric statistical tests for maximum distance as outcome</caption>
@@ -193,60 +113,59 @@ Performing these tests for our maximum distance metric, we see that graft source
 <tbody>
 <tr class="odd">
 <td align="center">Chronic Graft vs Host Disease</td>
-<td align="center">0.3492</td>
+<td align="center">0.35</td>
 </tr>
 <tr class="even">
 <td align="center">Acute Graft vs Host Disease</td>
-<td align="center">0.3611</td>
+<td align="center">0.36</td>
 </tr>
 <tr class="odd">
 <td align="center">Gender</td>
-<td align="center">0.6318</td>
+<td align="center">0.63</td>
 </tr>
 <tr class="even">
 <td align="center">Vital Status</td>
-<td align="center">0.1448</td>
+<td align="center">0.14</td>
 </tr>
 <tr class="odd">
 <td align="center">initialNegative</td>
-<td align="center">0.6797</td>
+<td align="center">0.68</td>
 </tr>
 <tr class="even">
 <td align="center">Batch</td>
-<td align="center">0.4793</td>
+<td align="center">0.48</td>
 </tr>
 <tr class="odd">
 <td align="center">Race</td>
-<td align="center">0.3308</td>
+<td align="center">0.33</td>
 </tr>
 <tr class="even">
 <td align="center">Hispanic</td>
-<td align="center">0.1481</td>
+<td align="center">0.15</td>
 </tr>
 <tr class="odd">
 <td align="center">Diagnosis</td>
-<td align="center">0.9087</td>
+<td align="center">0.91</td>
 </tr>
 <tr class="even">
 <td align="center">Transplant Type</td>
-<td align="center">0.2799</td>
+<td align="center">0.28</td>
 </tr>
 <tr class="odd">
 <td align="center">Transplant Response</td>
-<td align="center">0.6978</td>
+<td align="center">0.70</td>
 </tr>
 <tr class="even">
 <td align="center">Graft Source</td>
-<td align="center">0.0105</td>
+<td align="center"><span class="math inline">\(1.0*10^{-2}\)</span></td>
 </tr>
 <tr class="odd">
 <td align="center">Care Environment</td>
-<td align="center">0.6004</td>
+<td align="center">0.60</td>
 </tr>
 </tbody>
 </table>
 </p>
-<p>When we perform these same tests for our last distance metric, we see that none of our variables are significant.</p>
 <p>
 <table style="width:86%;">
 <caption>P-values from non-parametric statistical tests for last distance as outcome</caption>
@@ -263,59 +182,164 @@ Performing these tests for our maximum distance metric, we see that graft source
 <tbody>
 <tr class="odd">
 <td align="center">Chronic Graft vs Host Disease</td>
-<td align="center">0.5089</td>
+<td align="center">0.51</td>
 </tr>
 <tr class="even">
 <td align="center">Acute Graft vs Host Disease</td>
-<td align="center">0.7019</td>
+<td align="center">0.70</td>
 </tr>
 <tr class="odd">
 <td align="center">Gender</td>
-<td align="center">0.6116</td>
+<td align="center">0.61</td>
 </tr>
 <tr class="even">
 <td align="center">Vital Status</td>
-<td align="center">0.1732</td>
+<td align="center">0.17</td>
 </tr>
 <tr class="odd">
 <td align="center">initialNegative</td>
-<td align="center">0.4349</td>
+<td align="center">0.43</td>
 </tr>
 <tr class="even">
 <td align="center">Batch</td>
-<td align="center">0.1426</td>
+<td align="center">0.14</td>
 </tr>
 <tr class="odd">
 <td align="center">Race</td>
-<td align="center">0.4292</td>
+<td align="center">0.43</td>
 </tr>
 <tr class="even">
 <td align="center">Hispanic</td>
-<td align="center">0.4504</td>
+<td align="center">0.45</td>
 </tr>
 <tr class="odd">
 <td align="center">Diagnosis</td>
-<td align="center">0.7726</td>
+<td align="center">0.77</td>
 </tr>
 <tr class="even">
 <td align="center">Transplant Type</td>
-<td align="center">0.7830</td>
+<td align="center">0.78</td>
 </tr>
 <tr class="odd">
 <td align="center">Transplant Response</td>
-<td align="center">0.6534</td>
+<td align="center">0.65</td>
 </tr>
 <tr class="even">
 <td align="center">Graft Source</td>
-<td align="center">0.1529</td>
+<td align="center">0.15</td>
 </tr>
 <tr class="odd">
 <td align="center">Care Environment</td>
-<td align="center">0.7802</td>
+<td align="center">0.78</td>
 </tr>
 </tbody>
 </table>
 </p>
+<p>In addition to conducting our non-parametric tests for our summary statistics, we also performed linear regressions to attempt to quantify the significance of our covariates with respect to the dynamics of the microbiome.</p>
+<p>Based upon exploratory data analysis, we kept all of our continuous variables untransformed. There were no extremely concerning trends in any of our categorical variables either, so we did not transform them. There was also no need to transform the outcome variable of maximum distance.</p>
+<p>We used lattice plots to search for interaction effects across our categorical variables, as well as boxplots to search for connections between categorical and quantitative covariates. Identified interactions were included in our baseline model. Backwards selection was then performed using AIC as a scoring criterion.</p>
+<p>For maximum distance as the outcome, our final model with the lowest AIC based on backward selection came out to be as follows:</p>
+<p><span class="math inline">\(maxDistance_{i} = {\beta_{transplantAge}}transplantAge_{i} + {\beta_{AlloDLI}}I(transplantType_{i}=AlloDLI) + {\beta_{Auto}}I(transplantType_{i}=Auto) +{\beta_{Cord}}I(graftSource_{i}=Cord) + {\beta_{PBPC}}I(graftSource_{i}=PBPC) + {\beta_{Dead}}I(vitalStatus_{i}=Dead) + {\beta_{CGVHD}}I(CGVHD_{i}=1)+ {\beta_{anc500}}anc500_{i} + {\beta_{careEnv2}}I(careEnv_{i}=2) + {\beta_{careEnv3}}I(careEnv_{i}=3) + {\beta_{totalTime}}totalTime_{i} + {\beta_{vitalStatus/careEnv2}}I(vitalStatus/careEnv2_{i}=1) + {\beta_{vitalStatus/careEnv3}}I(vitalStatus/careEnv3_{i}=1)\)</span></p>
+<p>This model had an AIC of -34.4, and it identified the following covariates as significant (Table 5):</p>
+<p>
+<table style="width:100%;">
+<caption>Significant P-values from linear regression with max distance as outcome</caption>
+<colgroup>
+<col width="35%" />
+<col width="17%" />
+<col width="32%" />
+<col width="15%" />
+</colgroup>
+<thead>
+<tr class="header">
+<th align="center">Covariate</th>
+<th align="center">Estimate</th>
+<th align="center">Confidence Interval</th>
+<th align="center">P-value</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td align="center">Age at Transplant</td>
+<td align="center"><span class="math inline">\(4.56*10^{-3}\)</span></td>
+<td align="center"><span class="math inline">\((3.2*10^{-4}, 8.8*10^{-3})\)</span></td>
+<td align="center"><span class="math inline">\(3.6*10^{-2}\)</span></td>
+</tr>
+<tr class="even">
+<td align="center">Graft Source (Cord Blood)</td>
+<td align="center"><span class="math inline">\(-3.91*10^{-1}\)</span></td>
+<td align="center"><span class="math inline">\((-6.1*10^{-1}, -1.7*10^{-1})\)</span></td>
+<td align="center"><span class="math inline">\(8.9*10^{-4}\)</span></td>
+</tr>
+<tr class="odd">
+<td align="center">Vital Status (Dead)</td>
+<td align="center"><span class="math inline">\(-9.14*10^{-2}\)</span></td>
+<td align="center"><span class="math inline">\((-2.0*10^{-1}, 1.8*10^{-2})\)</span></td>
+<td align="center"><span class="math inline">\(9.8*10^{-2}\)</span></td>
+</tr>
+<tr class="even">
+<td align="center">Vital Status(Dead)/Care Env(3)</td>
+<td align="center"><span class="math inline">\(2.86*10^{-1}\)</span></td>
+<td align="center"><span class="math inline">\((-2.6*10^{-2}, 6.0*10^{-1})\)</span></td>
+<td align="center"><span class="math inline">\(7.1*10^{-2}\)</span></td>
+</tr>
+</tbody>
+</table>
+</p>
+<p>Based upon our model, we note that the “maximum distance” traveled in an ordination plot by a patient’s microbiome is expected to go up by roughly <span class="math inline">\(4.56*10^{-3}\)</span> units for each additional year of age at the time of transplant. In other words, it could be that the older a patient, the more variability in their microbiome.</p>
+<p>We also see that a patient who ends up dead is expected to have a maximum distance that is roughly <span class="math inline">\(9.14*10^{-2}\)</span> units less than that of a patient who is still alive. A possible interpretation of this behavior is that patients who are still alive have microbiome compositions that vary significantly from their sick status pre-transplant.</p>
+<p>Similarly, a patient who has a graft source of Cord Blood is expected to have a maximum distance that is roughly <span class="math inline">\(3.91*10^{-1}\)</span> units less than a patient who has a graft source of bone marrow. It may be the case that patients who receive cord blood stem cell donations have less disruption in their microbiomes than patients who receive bone marrow.</p>
+<p>We note that our assumptions for equality of subpopulation standard deviations, as well as for our samples coming from a normally distributed population, are fulfilled by the residual plot and normal QQ-plot for our data.</p>
+<p>We repeated the same backward selection process as above, but this time, we used last distance as our outcome variable. Based on backward selection according to AIC, we came up with the following model:</p>
+<p><span class="math inline">\(lastDistance_{i} = {\beta_{Black}}I(race_{i}=Black) +{\beta_{MoreThanOne}}I(race_{i}=MoreThanOne) + {\beta_{Asian}}I(race_{i}=Asian) + {\beta_{hispanicUnk}}I(hispanic_{i}=Unk) + {\beta_{hispanicYes}}I(hispanic_{i}=Yes)+ {\beta_{Cord}}I(graftSource_{i}=Cord) + {\beta_{PBPC}}I(graftSource_{i}=PBPC) + {\beta_{Dead}}I(vitalStatus_{i}=Dead) + {\beta_{CGVHD}}I(CGVHD_{i}=1) + {\beta_{totalTimeSpan}}totalTimeSpan_{i}\)</span></p>
+<p>Our model had an AIC of -32.3, and identified the following variables as significant (Table 6):</p>
+<p>
+<table>
+<caption>Significant P-values from linear regression with last distance as outcome</caption>
+<colgroup>
+<col width="30%" />
+<col width="19%" />
+<col width="34%" />
+<col width="15%" />
+</colgroup>
+<thead>
+<tr class="header">
+<th align="center">Covariate</th>
+<th align="center">Estimate</th>
+<th align="center">Confidence Interval</th>
+<th align="center">P-value</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td align="center">Race (Black)</td>
+<td align="center"><span class="math inline">\(1.59*10^{-1}\)</span></td>
+<td align="center"><span class="math inline">\((-2.7*10^{-2}, 3.4*10^{-1})\)</span></td>
+<td align="center"><span class="math inline">\(9.3*10^{-2}\)</span></td>
+</tr>
+<tr class="even">
+<td align="center">Graft Source (Cord Blood)</td>
+<td align="center"><span class="math inline">\(-3.01*10^{-1}\)</span></td>
+<td align="center"><span class="math inline">\((-5.1*10^{-1}, -9.3*10^{-2})\)</span></td>
+<td align="center"><span class="math inline">\(5.4*10^{-3}\)</span></td>
+</tr>
+<tr class="odd">
+<td align="center">Vital Status (Dead)</td>
+<td align="center"><span class="math inline">\(-1.09*10^{-1}\)</span></td>
+<td align="center"><span class="math inline">\((-2.1*10^{-1}, -8.2*10^{-3})\)</span></td>
+<td align="center"><span class="math inline">\(3.5*10^{-2}\)</span></td>
+</tr>
+<tr class="even">
+<td align="center">Total Time Span</td>
+<td align="center"><span class="math inline">\(7.59*10^{-4}\)</span></td>
+<td align="center"><span class="math inline">\((1.6*10^{-5}, 1.5*10^{-3})\)</span></td>
+<td align="center"><span class="math inline">\(4.6*10^{-2}\)</span></td>
+</tr>
+</tbody>
+</table>
+</p>
+<p>Interestingly, graft source of cord blood and vital status still appear to be relevant. In particular, we see that according to our model, a patient who is confirmed dead is expected to have a last distance metric that is roughly <span class="math inline">\(1.09*10^{-1}\)</span> units shorter than that of a patient who is confirmed alive.</p>
+<p>Likewise, a patient with a graft source of cord blood is expected to have a last distance value that is roughly <span class="math inline">\(3.01*10^{-1}\)</span> units shorter than that of a patient with a graft source of bone marrow. It seems that both of these traits are correlated with less change in the long-term for patients’ microbiome compositions. We also note that while transplant age is no longer significant, a race of “black” appears to be compared to the baseline of “asian.”</p>
 <p>A major concern we had after these analyses was that our summary metrics could potentially vary extensively based upon the addition and removal of samples from our dataset. To deal with this possible high sensitivity to data, we decided to make use of a more creative method for modeling the abundances of ASVs in our data.</p>
 
 </div>
