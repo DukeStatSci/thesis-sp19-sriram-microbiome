@@ -81,12 +81,7 @@ Based upon exploratory data analysis, we kept all of our continuous variables un
 
 We used lattice plots to search for interaction effects across our categorical variables, as well as boxplots to search for connections between categorical and quantitative covariates. Identified interactions were included in our baseline model. Backward selection was then performed using AIC as a scoring criterion.
 
-For maximum distance as the outcome, our final model with the lowest AIC based on backward selection came out to be as follows:
-
-\begin{equation}
-maxDistance_{i} = {\beta_{transplantAge}}transplantAge_{i} + {\beta_{AlloDLI}}I(transplantType_{i}=AlloDLI) + {\beta_{Auto}}I(transplantType_{i}=Auto) +{\beta_{Cord}}I(graftSource_{i}=Cord) + {\beta_{PBPC}}I(graftSource_{i}=PBPC) + {\beta_{Dead}}I(vitalStatus_{i}=Dead) + {\beta_{CGVHD}}I(CGVHD_{i}=1)+ {\beta_{anc500}}anc500_{i} +  {\beta_{careEnv2}}I(careEnv_{i}=2) + {\beta_{careEnv3}}I(careEnv_{i}=3) + {\beta_{totalTime}}totalTime_{i} + {\beta_{vitalStatus/careEnv2}}I(vitalStatus/careEnv2_{i}=1) + {\beta_{vitalStatus/careEnv3}}I(vitalStatus/careEnv3_{i}=1)$
-\end{equation}
-This model had an AIC of -34.4, and it identified the following covariates as significant (Table 5):
+For maximum distance as the outcome, our final model with the lowest AIC based on backward selection included fixed effects for transplant age, transplant type (Allo, AlloDLI, or Auto), graft source (bone marrow, cord blood, or PBPC), vital status (alive or dead), chronic graft v host disease (0 or 1), days after transplant that ANC is greater than 500, care environment (1, 2, or 3), and total time. An interaction effect was also included between vital status and care environment. This model had an AIC of -34.4, and it identified the following covariates as significant (Table 5):
 
 <p>
 ----------------------------------------------------------------------------------------------------
@@ -112,12 +107,7 @@ Similarly, a patient who has a graft source of Cord Blood is expected to have a 
 
 We note that our assumptions for equality of subpopulation standard deviations, as well as for our samples coming from a normally distributed population, are fulfilled by the residual plot and normal QQ-plot for our data.
 
-We repeated the same backward selection process as above, but this time, we used last distance as our outcome variable. Based on backward selection according to AIC, we came up with the following model:
-
-$lastDistance_{i} = {\beta_{Black}}I(race_{i}=Black) +{\beta_{MoreThanOne}}I(race_{i}=MoreThanOne) + {\beta_{Asian}}I(race_{i}=Asian) + {\beta_{hispanicUnk}}I(hispanic_{i}=Unk) + {\beta_{hispanicYes}}I(hispanic_{i}=Yes)+ {\beta_{Cord}}I(graftSource_{i}=Cord) + {\beta_{PBPC}}I(graftSource_{i}=PBPC) + {\beta_{Dead}}I(vitalStatus_{i}=Dead) + {\beta_{CGVHD}}I(CGVHD_{i}=1) + {\beta_{totalTimeSpan}}totalTimeSpan_{i}$
-
-Our model had an AIC of -32.3, and identified the following variables as significant (Table 6):
-
+We repeated the same backward selection process as above, but this time, we used last distance as our outcome variable. Based on backward selection according to AIC, our final model had last distance as the outcome, and fixed effects for race (White, Black, More than One, or Asian), hispanic ethnicity (no, unknown, or yes), graft source (bone marrow, cord blood, or PBPC), vital status (alive or dead), chronic graft v host disease (0 or 1), and total time span. Our model had an AIC of -32.3, and identified the following variables as significant (Table 6):
 
 <p>
 ----------------------------------------------------------------------------------------------------
@@ -137,6 +127,6 @@ Table: Table 6. Significant P-values from linear regression with last distance a
 
 Interestingly, graft source of cord blood and vital status still appear to be relevant. In particular, we see that according to our model, a patient who is confirmed dead is expected to have a last distance metric that is roughly $1.09*10^{-1}$ units shorter than that of a patient who is confirmed alive.
 
-Likewise, a patient with a graft source of cord blood is expected to have a last distance value that is roughly $3.01*10^{-1}$ units shorter than that of a patient with a graft source of bone marrow. It seems that both of these traits are correlated with less change in the long-term for patients' microbiome compositions. We also note that while transplant age is no longer significant, a race of "black" appears to be significant compared to the baseline of "asian." 
+Likewise, a patient with a graft source of cord blood is expected to have a last distance value that is roughly $3.01*10^{-1}$ units shorter than that of a patient with a graft source of bone marrow. It seems that both of these traits are correlated with less change in the long-term for patients' microbiome compositions. We also note that while transplant age is no longer significant, a race of "black" appears to be significant compared to the baseline of "white." 
 
 A major concern we had after these analyses was that our summary metrics could potentially vary extensively based upon the addition and removal of samples from our dataset. To deal with this possible high sensitivity to data, we decided to make use of a more creative method for modeling the abundances of ASVs in our data: phylogenetic tree decomposition.

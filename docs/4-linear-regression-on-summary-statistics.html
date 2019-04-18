@@ -113,47 +113,47 @@
 <tbody>
 <tr class="odd">
 <td align="center">Chronic Graft vs Host Disease</td>
-<td align="center">0.35</td>
+<td align="center"><span class="math inline">\(0.35\)</span></td>
 </tr>
 <tr class="even">
 <td align="center">Acute Graft vs Host Disease</td>
-<td align="center">0.36</td>
+<td align="center"><span class="math inline">\(0.36\)</span></td>
 </tr>
 <tr class="odd">
 <td align="center">Gender</td>
-<td align="center">0.63</td>
+<td align="center"><span class="math inline">\(0.63\)</span></td>
 </tr>
 <tr class="even">
 <td align="center">Vital Status</td>
-<td align="center">0.14</td>
+<td align="center"><span class="math inline">\(0.14\)</span></td>
 </tr>
 <tr class="odd">
 <td align="center">initialNegative</td>
-<td align="center">0.68</td>
+<td align="center"><span class="math inline">\(0.68\)</span></td>
 </tr>
 <tr class="even">
 <td align="center">Batch</td>
-<td align="center">0.48</td>
+<td align="center"><span class="math inline">\(0.48\)</span></td>
 </tr>
 <tr class="odd">
 <td align="center">Race</td>
-<td align="center">0.33</td>
+<td align="center"><span class="math inline">\(0.33\)</span></td>
 </tr>
 <tr class="even">
 <td align="center">Hispanic</td>
-<td align="center">0.15</td>
+<td align="center"><span class="math inline">\(0.15\)</span></td>
 </tr>
 <tr class="odd">
 <td align="center">Diagnosis</td>
-<td align="center">0.91</td>
+<td align="center"><span class="math inline">\(0.91\)</span></td>
 </tr>
 <tr class="even">
 <td align="center">Transplant Type</td>
-<td align="center">0.28</td>
+<td align="center"><span class="math inline">\(0.28\)</span></td>
 </tr>
 <tr class="odd">
 <td align="center">Transplant Response</td>
-<td align="center">0.70</td>
+<td align="center"><span class="math inline">\(0.70\)</span></td>
 </tr>
 <tr class="even">
 <td align="center">Graft Source</td>
@@ -161,7 +161,7 @@
 </tr>
 <tr class="odd">
 <td align="center">Care Environment</td>
-<td align="center">0.60</td>
+<td align="center"><span class="math inline">\(0.60\)</span></td>
 </tr>
 </tbody>
 </table>
@@ -182,55 +182,55 @@
 <tbody>
 <tr class="odd">
 <td align="center">Chronic Graft vs Host Disease</td>
-<td align="center">0.51</td>
+<td align="center"><span class="math inline">\(0.51\)</span></td>
 </tr>
 <tr class="even">
 <td align="center">Acute Graft vs Host Disease</td>
-<td align="center">0.70</td>
+<td align="center"><span class="math inline">\(0.70\)</span></td>
 </tr>
 <tr class="odd">
 <td align="center">Gender</td>
-<td align="center">0.61</td>
+<td align="center"><span class="math inline">\(0.61\)</span></td>
 </tr>
 <tr class="even">
 <td align="center">Vital Status</td>
-<td align="center">0.17</td>
+<td align="center"><span class="math inline">\(0.17\)</span></td>
 </tr>
 <tr class="odd">
 <td align="center">initialNegative</td>
-<td align="center">0.43</td>
+<td align="center"><span class="math inline">\(0.43\)</span></td>
 </tr>
 <tr class="even">
 <td align="center">Batch</td>
-<td align="center">0.14</td>
+<td align="center"><span class="math inline">\(0.14\)</span></td>
 </tr>
 <tr class="odd">
 <td align="center">Race</td>
-<td align="center">0.43</td>
+<td align="center"><span class="math inline">\(0.43\)</span></td>
 </tr>
 <tr class="even">
 <td align="center">Hispanic</td>
-<td align="center">0.45</td>
+<td align="center"><span class="math inline">\(0.45\)</span></td>
 </tr>
 <tr class="odd">
 <td align="center">Diagnosis</td>
-<td align="center">0.77</td>
+<td align="center"><span class="math inline">\(0.77\)</span></td>
 </tr>
 <tr class="even">
 <td align="center">Transplant Type</td>
-<td align="center">0.78</td>
+<td align="center"><span class="math inline">\(0.78\)</span></td>
 </tr>
 <tr class="odd">
 <td align="center">Transplant Response</td>
-<td align="center">0.65</td>
+<td align="center"><span class="math inline">\(0.65\)</span></td>
 </tr>
 <tr class="even">
 <td align="center">Graft Source</td>
-<td align="center">0.15</td>
+<td align="center"><span class="math inline">\(0.15\)</span></td>
 </tr>
 <tr class="odd">
 <td align="center">Care Environment</td>
-<td align="center">0.78</td>
+<td align="center"><span class="math inline">\(0.78\)</span></td>
 </tr>
 </tbody>
 </table>
@@ -238,9 +238,7 @@
 <p>In addition to conducting our non-parametric tests for our summary statistics, we also performed linear regressions to attempt to quantify the significance of our covariates with respect to the dynamics of the microbiome.</p>
 <p>Based upon exploratory data analysis, we kept all of our continuous variables untransformed. There were no extremely concerning trends in any of our categorical variables either, so we did not transform them. There was also no need to transform the outcome variable of maximum distance.</p>
 <p>We used lattice plots to search for interaction effects across our categorical variables, as well as boxplots to search for connections between categorical and quantitative covariates. Identified interactions were included in our baseline model. Backward selection was then performed using AIC as a scoring criterion.</p>
-<p>For maximum distance as the outcome, our final model with the lowest AIC based on backward selection came out to be as follows:</p>
-<p><span class="math inline">\(maxDistance_{i} = {\beta_{transplantAge}}transplantAge_{i} + {\beta_{AlloDLI}}I(transplantType_{i}=AlloDLI) + {\beta_{Auto}}I(transplantType_{i}=Auto) +{\beta_{Cord}}I(graftSource_{i}=Cord) + {\beta_{PBPC}}I(graftSource_{i}=PBPC) + {\beta_{Dead}}I(vitalStatus_{i}=Dead) + {\beta_{CGVHD}}I(CGVHD_{i}=1)+ {\beta_{anc500}}anc500_{i} + {\beta_{careEnv2}}I(careEnv_{i}=2) + {\beta_{careEnv3}}I(careEnv_{i}=3) + {\beta_{totalTime}}totalTime_{i} + {\beta_{vitalStatus/careEnv2}}I(vitalStatus/careEnv2_{i}=1) + {\beta_{vitalStatus/careEnv3}}I(vitalStatus/careEnv3_{i}=1)\)</span></p>
-<p>This model had an AIC of -34.4, and it identified the following covariates as significant (Table 5):</p>
+<p>For maximum distance as the outcome, our final model with the lowest AIC based on backward selection included fixed effects for transplant age, transplant type (Allo, AlloDLI, or Auto), graft source (bone marrow, cord blood, or PBPC), vital status (alive or dead), chronic graft v host disease (0 or 1), days after transplant that ANC is greater than 500, care environment (1, 2, or 3), and total time. An interaction effect was also included between vital status and care environment. This model had an AIC of -34.4, and it identified the following covariates as significant (Table 5):</p>
 <p>
 <table style="width:100%;">
 <caption>Table 5. Significant P-values from linear regression with max distance as outcome</caption>
@@ -290,9 +288,7 @@
 <p>We also see that a patient who ends up dead is expected to have a maximum distance that is roughly <span class="math inline">\(9.14*10^{-2}\)</span> units less than that of a patient who is still alive. A possible interpretation of this behavior is that patients who are still alive have microbiome compositions that vary significantly from their sick status pre-transplant.</p>
 <p>Similarly, a patient who has a graft source of Cord Blood is expected to have a maximum distance that is roughly <span class="math inline">\(3.91*10^{-1}\)</span> units less than a patient who has a graft source of bone marrow. It may be the case that patients who receive cord blood stem cell donations have less disruption in their microbiomes than patients who receive bone marrow.</p>
 <p>We note that our assumptions for equality of subpopulation standard deviations, as well as for our samples coming from a normally distributed population, are fulfilled by the residual plot and normal QQ-plot for our data.</p>
-<p>We repeated the same backward selection process as above, but this time, we used last distance as our outcome variable. Based on backward selection according to AIC, we came up with the following model:</p>
-<p><span class="math inline">\(lastDistance_{i} = {\beta_{Black}}I(race_{i}=Black) +{\beta_{MoreThanOne}}I(race_{i}=MoreThanOne) + {\beta_{Asian}}I(race_{i}=Asian) + {\beta_{hispanicUnk}}I(hispanic_{i}=Unk) + {\beta_{hispanicYes}}I(hispanic_{i}=Yes)+ {\beta_{Cord}}I(graftSource_{i}=Cord) + {\beta_{PBPC}}I(graftSource_{i}=PBPC) + {\beta_{Dead}}I(vitalStatus_{i}=Dead) + {\beta_{CGVHD}}I(CGVHD_{i}=1) + {\beta_{totalTimeSpan}}totalTimeSpan_{i}\)</span></p>
-<p>Our model had an AIC of -32.3, and identified the following variables as significant (Table 6):</p>
+<p>We repeated the same backward selection process as above, but this time, we used last distance as our outcome variable. Based on backward selection according to AIC, our final model had last distance as the outcome, and fixed effects for race (White, Black, More than One, or Asian), hispanic ethnicity (no, unknown, or yes), graft source (bone marrow, cord blood, or PBPC), vital status (alive or dead), chronic graft v host disease (0 or 1), and total time span. Our model had an AIC of -32.3, and identified the following variables as significant (Table 6):</p>
 <p>
 <table>
 <caption>Table 6. Significant P-values from linear regression with last distance as outcome</caption>
@@ -339,7 +335,7 @@
 </table>
 </p>
 <p>Interestingly, graft source of cord blood and vital status still appear to be relevant. In particular, we see that according to our model, a patient who is confirmed dead is expected to have a last distance metric that is roughly <span class="math inline">\(1.09*10^{-1}\)</span> units shorter than that of a patient who is confirmed alive.</p>
-<p>Likewise, a patient with a graft source of cord blood is expected to have a last distance value that is roughly <span class="math inline">\(3.01*10^{-1}\)</span> units shorter than that of a patient with a graft source of bone marrow. It seems that both of these traits are correlated with less change in the long-term for patients’ microbiome compositions. We also note that while transplant age is no longer significant, a race of “black” appears to be significant compared to the baseline of “asian.”</p>
+<p>Likewise, a patient with a graft source of cord blood is expected to have a last distance value that is roughly <span class="math inline">\(3.01*10^{-1}\)</span> units shorter than that of a patient with a graft source of bone marrow. It seems that both of these traits are correlated with less change in the long-term for patients’ microbiome compositions. We also note that while transplant age is no longer significant, a race of “black” appears to be significant compared to the baseline of “white.”</p>
 <p>A major concern we had after these analyses was that our summary metrics could potentially vary extensively based upon the addition and removal of samples from our dataset. To deal with this possible high sensitivity to data, we decided to make use of a more creative method for modeling the abundances of ASVs in our data: phylogenetic tree decomposition.</p>
 
 </div>
