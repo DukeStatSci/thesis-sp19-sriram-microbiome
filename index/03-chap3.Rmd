@@ -1,27 +1,25 @@
 # Interactive Visualizations in Tableau
 
-Tableau is a user-friendly application helpful in the design of interactive visualizations. We used this application to visualize the our data over time in our ordination plots and determine if there were any noticeable associations between variables in our metadata and the dynamics of our samples.
+Tableau is a user-friendly application helpful in the design of interactive visualizations. We used this application to aid in exploratory data analysis of our data over time and to determine if there were any noticeably visible associations between variables in our metadata and the dynamics of our samples.
 
-In each Tableau sheet created, hovering over a single point will cause that sample, as well as all other samples corresponding to the same patient, to be highlighted. This behavior allows us to specifically visualize how our samples' distributions change on an individual basis.
+In each Tableau sheet created, hovering over a single point will cause that sample, as well as all other samples corresponding to the same patient, to be highlighted. This behavior allows us to specifically visualize how our samples' distributions change at an individual-by-individual level. Figures \@ref(fig:figure8), \@ref(fig:figure9), and \@ref(fig:figure10) include some examples of the plots designed in Tableau. 
 
-Figures \@ref(fig:figure8), \@ref(fig:figure9), and \@ref(fig:figure10) include some examples of the plots designed in Tableau. 
-
-Figure \@ref(fig:figure8) depicts an ordination plot, colored by Batch number, and connected by patient ID. The thickness of lines connecting points to one another increases as time progresses. Hovering over a point will also highlight other sample points and the path representative of the selected patient.
+Figure \@ref(fig:figure8) depicts an ordination plot, colored by Batch number, and connected by patient ID. The thickness of lines connecting points to one another increases as time progresses in the study. Hovering over a point will also highlight all other sample points corresponding to the individual, as well as the path representative of the selected patient.
 
 ```{r figure8, fig.cap="Ordination Plot colored by Batch Number and connected by Patient ID", out.width = "700px",echo=FALSE}
 include_graphics(path = "figure/figure8.png")
 ```
 
-Figure \@ref(fig:figure9) shows plots of the maximum distance travelled by different patients, separated by whether or not their first sample date occurred before or after their transplant. It appears roughly that patients with first time points occurring before transplant date may have potentially higher maximum distances.
+Figure \@ref(fig:figure9) shows plots of the maximum distance travelled by different patients, separated by whether or not their first sample date occurred before their transplant. It appears that patients with initial time points occurring before transplant date may have potentially higher maximum distances.
 
 ```{r figure9, fig.cap="Plots of Maximum Distance traveled by Patient Microbiome", out.width = "700px",echo=FALSE}
 include_graphics(path = "figure/figure9.png")
 ```
 
-Figure \@ref(fig:figure10) depicts two ordination plots colored by presence of acute graft versus host disease. The top plot depicts agvhd values taken within the twelve weeks prior to transplants, and the second plot depicts agvhd values taken within the twelve weeks after. Both plots can be manipulated to specify the desired time frame. This kind of visualization allows us to more directly compare the distributions of our covariates at different times.
+Figure \@ref(fig:figure10) depicts two ordination plots colored according to the presence of acute graft versus host disease. The top plot depicts AGVHD values taken within the twelve weeks prior to transplants, and the second plot depicts AGVHD values taken within the twelve weeks after. Both plots can be manipulated to specify the desired time frame. This kind of visualization allows us to more directly compare the distributions of our covariates across different times.
 
 ```{r figure10, fig.cap="Ordination Plots colored by AGVHD, separated by Time", out.width = "700px",echo=FALSE}
 include_graphics(path = "figure/figure10.png")
 ```
 
-With all of these plots, we were better able to interact with our data and the metrics that we had devised. However, while these visualizations were informative, we were still unable to specifically quantify potential associations between our various covariates and the dynamics of the gut microbiome.
+With our Tableau spreadsheet, we were better able to interact with our data and the metrics that we had devised. However, while these visualizations were informative, we were still unable to specifically quantify potential associations between our various covariates and the dynamics of the gut microbiome.

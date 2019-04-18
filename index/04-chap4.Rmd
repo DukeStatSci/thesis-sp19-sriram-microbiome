@@ -1,5 +1,5 @@
 # Linear Regression on Summary Statistics
-With the processing and filtration of our data, as well as its visualization in Tableau, we turned to basic linear regressions as well as non-parametric statistical tests to attempt to evaluate how our covariates may be linked to the dynamics of the microbiome.
+With the processing and filtration of our data, as well as its visualization in Tableau, we turned to non-parametric statistical tests as well as linear regressions to attempt to evaluate how our covariates may be linked to the dynamics of the microbiome.
 
 We began with various non-parametric tests, because they avoid the distribution assumptions requisite in linear regressions. While these methods limit the amount of information we can consider within a single test, because we consider just one variable instead of several, they are still potentially useful in identifying traits related to our summary statistics.
 
@@ -79,12 +79,11 @@ In addition to conducting our non-parametric tests for our summary statistics, w
 
 Based upon exploratory data analysis, we kept all of our continuous variables untransformed. There were no extremely concerning trends in any of our categorical variables either, so we did not transform them. There was also no need to transform the outcome variable of maximum distance.
 
-We used lattice plots to search for interaction effects across our categorical variables, as well as boxplots to search for connections between categorical and quantitative covariates. Identified interactions were included in our baseline model. Backwards selection was then performed using AIC as a scoring criterion.
+We used lattice plots to search for interaction effects across our categorical variables, as well as boxplots to search for connections between categorical and quantitative covariates. Identified interactions were included in our baseline model. Backward selection was then performed using AIC as a scoring criterion.
 
 For maximum distance as the outcome, our final model with the lowest AIC based on backward selection came out to be as follows:
 
 $maxDistance_{i} = {\beta_{transplantAge}}transplantAge_{i} + {\beta_{AlloDLI}}I(transplantType_{i}=AlloDLI) + {\beta_{Auto}}I(transplantType_{i}=Auto) +{\beta_{Cord}}I(graftSource_{i}=Cord) + {\beta_{PBPC}}I(graftSource_{i}=PBPC) + {\beta_{Dead}}I(vitalStatus_{i}=Dead) + {\beta_{CGVHD}}I(CGVHD_{i}=1)+ {\beta_{anc500}}anc500_{i} +  {\beta_{careEnv2}}I(careEnv_{i}=2) + {\beta_{careEnv3}}I(careEnv_{i}=3) + {\beta_{totalTime}}totalTime_{i} + {\beta_{vitalStatus/careEnv2}}I(vitalStatus/careEnv2_{i}=1) + {\beta_{vitalStatus/careEnv3}}I(vitalStatus/careEnv3_{i}=1)$
-
 
 This model had an AIC of -34.4, and it identified the following covariates as significant (Table 5):
 
@@ -137,8 +136,6 @@ Table: Table 6. Significant P-values from linear regression with last distance a
 
 Interestingly, graft source of cord blood and vital status still appear to be relevant. In particular, we see that according to our model, a patient who is confirmed dead is expected to have a last distance metric that is roughly $1.09*10^{-1}$ units shorter than that of a patient who is confirmed alive.
 
-Likewise, a patient with a graft source of cord blood is expected to have a last distance value that is roughly $3.01*10^{-1}$ units shorter than that of a patient with a graft source of bone marrow. It seems that both of these traits are correlated with less change in the long-term for patients' microbiome compositions. We also note that while transplant age is no longer significant, a race of "black" appears to be compared to the baseline of "asian." 
+Likewise, a patient with a graft source of cord blood is expected to have a last distance value that is roughly $3.01*10^{-1}$ units shorter than that of a patient with a graft source of bone marrow. It seems that both of these traits are correlated with less change in the long-term for patients' microbiome compositions. We also note that while transplant age is no longer significant, a race of "black" appears to be significant compared to the baseline of "asian." 
 
-A major concern we had after these analyses was that our summary metrics could potentially vary extensively based upon the addition and removal of samples from our dataset. To deal with this possible high sensitivity to data, we decided to make use of a more creative method for modeling the abundances of ASVs in our data.
-
-
+A major concern we had after these analyses was that our summary metrics could potentially vary extensively based upon the addition and removal of samples from our dataset. To deal with this possible high sensitivity to data, we decided to make use of a more creative method for modeling the abundances of ASVs in our data: phylogenetic tree decomposition.
