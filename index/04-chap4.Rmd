@@ -9,31 +9,31 @@ Performing these tests for our maximum distance metric, we see that graft source
 ---------------------------------------------------------------
   Covariate                                   P-value       
 ---------------------------------------- ---------------------- 
-  Chronic Graft vs Host Disease               0.35      
+  Chronic Graft vs Host Disease               $0.35$      
   
-  Acute Graft vs Host Disease                 0.36
+  Acute Graft vs Host Disease                 $0.36$
   
-  Gender                                      0.63
+  Gender                                      $0.63$
   
-  Vital Status                                0.14
+  Vital Status                                $0.14$
   
-  initialNegative                             0.68
+  initialNegative                             $0.68$
   
-  Batch                                       0.48
+  Batch                                       $0.48$
   
-  Race                                        0.33
+  Race                                        $0.33$
   
-  Hispanic                                    0.15
+  Hispanic                                    $0.15$
   
-  Diagnosis                                   0.91
+  Diagnosis                                   $0.91$
   
-  Transplant Type                             0.28
+  Transplant Type                             $0.28$
   
-  Transplant Response                         0.70
+  Transplant Response                         $0.70$
   
   Graft Source                                $1.0*10^{-2}$
   
-  Care Environment                            0.60
+  Care Environment                            $0.60$
 -------------------------------------- ---------------------- 
 Table: Table 3. P-values from non-parametric statistical tests for maximum distance as outcome
 
@@ -44,31 +44,31 @@ Table: Table 3. P-values from non-parametric statistical tests for maximum dista
 ---------------------------------------------------------------------------------------
   Covariate                                   P-value       
 -------------------------------------- ---------------------- 
-  Chronic Graft vs Host Disease               0.51                
+  Chronic Graft vs Host Disease               $0.51$                
   
-  Acute Graft vs Host Disease                 0.70
+  Acute Graft vs Host Disease                 $0.70$
   
-  Gender                                      0.61
+  Gender                                      $0.61$
   
-  Vital Status                                0.17
+  Vital Status                                $0.17$
   
-  initialNegative                             0.43
+  initialNegative                             $0.43$
   
-  Batch                                       0.14
+  Batch                                       $0.14$
   
-  Race                                        0.43
+  Race                                        $0.43$
   
-  Hispanic                                    0.45
+  Hispanic                                    $0.45$
   
-  Diagnosis                                   0.77
+  Diagnosis                                   $0.77$
   
-  Transplant Type                             0.78
+  Transplant Type                             $0.78$
   
-  Transplant Response                         0.65
+  Transplant Response                         $0.65$
   
-  Graft Source                                0.15
+  Graft Source                                $0.15$
   
-  Care Environment                            0.78
+  Care Environment                            $0.78$
 -------------------------------------- ---------------------- 
 Table: Table 4. P-values from non-parametric statistical tests for last distance as outcome
 
@@ -83,8 +83,9 @@ We used lattice plots to search for interaction effects across our categorical v
 
 For maximum distance as the outcome, our final model with the lowest AIC based on backward selection came out to be as follows:
 
-$maxDistance_{i} = {\beta_{transplantAge}}transplantAge_{i} + {\beta_{AlloDLI}}I(transplantType_{i}=AlloDLI) + {\beta_{Auto}}I(transplantType_{i}=Auto) +{\beta_{Cord}}I(graftSource_{i}=Cord) + {\beta_{PBPC}}I(graftSource_{i}=PBPC) + {\beta_{Dead}}I(vitalStatus_{i}=Dead) + {\beta_{CGVHD}}I(CGVHD_{i}=1)+ {\beta_{anc500}}anc500_{i} +  {\beta_{careEnv2}}I(careEnv_{i}=2) + {\beta_{careEnv3}}I(careEnv_{i}=3) + {\beta_{totalTime}}totalTime_{i} + {\beta_{vitalStatus/careEnv2}}I(vitalStatus/careEnv2_{i}=1) + {\beta_{vitalStatus/careEnv3}}I(vitalStatus/careEnv3_{i}=1)$
-
+\begin{equation}
+maxDistance_{i} = {\beta_{transplantAge}}transplantAge_{i} + {\beta_{AlloDLI}}I(transplantType_{i}=AlloDLI) + {\beta_{Auto}}I(transplantType_{i}=Auto) +{\beta_{Cord}}I(graftSource_{i}=Cord) + {\beta_{PBPC}}I(graftSource_{i}=PBPC) + {\beta_{Dead}}I(vitalStatus_{i}=Dead) + {\beta_{CGVHD}}I(CGVHD_{i}=1)+ {\beta_{anc500}}anc500_{i} +  {\beta_{careEnv2}}I(careEnv_{i}=2) + {\beta_{careEnv3}}I(careEnv_{i}=3) + {\beta_{totalTime}}totalTime_{i} + {\beta_{vitalStatus/careEnv2}}I(vitalStatus/careEnv2_{i}=1) + {\beta_{vitalStatus/careEnv3}}I(vitalStatus/careEnv3_{i}=1)$
+\end{equation}
 This model had an AIC of -34.4, and it identified the following covariates as significant (Table 5):
 
 <p>

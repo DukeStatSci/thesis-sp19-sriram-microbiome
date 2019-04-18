@@ -5,11 +5,11 @@
 
   <meta charset="UTF-8">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
-  <title>Chapter 2 Post-processing and Filtration of the Sequence Table | Statistical Analysis of the Human Gut Microbiome</title>
-  <meta name="description" content="Chapter 2 Post-processing and Filtration of the Sequence Table | Statistical Analysis of the Human Gut Microbiome">
+  <title>Chapter 2 Post-processing and Filtration of the Sequence Table | Statistical Analysis of Gut Microbiome Data for Memorial Sloan Kettering Patients Recovering from Leukemia</title>
+  <meta name="description" content="Chapter 2 Post-processing and Filtration of the Sequence Table | Statistical Analysis of Gut Microbiome Data for Memorial Sloan Kettering Patients Recovering from Leukemia">
   <meta name="generator" content="bookdown  and GitBook 2.6.7">
 
-  <meta property="og:title" content="Chapter 2 Post-processing and Filtration of the Sequence Table | Statistical Analysis of the Human Gut Microbiome" />
+  <meta property="og:title" content="Chapter 2 Post-processing and Filtration of the Sequence Table | Statistical Analysis of Gut Microbiome Data for Memorial Sloan Kettering Patients Recovering from Leukemia" />
   <meta property="og:type" content="book" />
   
   
@@ -17,7 +17,7 @@
   
 
   <meta name="twitter:card" content="summary" />
-  <meta name="twitter:title" content="Chapter 2 Post-processing and Filtration of the Sequence Table | Statistical Analysis of the Human Gut Microbiome" />
+  <meta name="twitter:title" content="Chapter 2 Post-processing and Filtration of the Sequence Table | Statistical Analysis of Gut Microbiome Data for Memorial Sloan Kettering Patients Recovering from Leukemia" />
   
   
   
@@ -84,7 +84,7 @@
       <div class="body-inner">
         <div class="book-header" role="navigation">
           <h1>
-            <i class="fa fa-circle-o-notch fa-spin"></i><a href="./">Statistical Analysis of the Human Gut Microbiome</a>
+            <i class="fa fa-circle-o-notch fa-spin"></i><a href="./">Statistical Analysis of Gut Microbiome Data for Memorial Sloan Kettering Patients Recovering from Leukemia</a>
           </h1>
         </div>
 
@@ -94,11 +94,10 @@
             <section class="normal" id="section-">
 <div id="post-processing-and-filtration-of-the-sequence-table" class="section level1">
 <h1><span class="header-section-number">Chapter 2</span> Post-processing and Filtration of the Sequence Table</h1>
-<p>The ASV table produced by Alex Sibley consisted of seven different bathces of stool samples produced by MSK. These distinct tables were merged into a single ASV table, with columns representing different ASVs, rows representing sampling, and counts in the table representing the abundance of each ASV in each of our samples.</p>
-<p>DADA2 was used to remove chimeric sequences from the sequence table by comparing each inferred sequence to others in the table, and removing those that could be reproduced by stitching together two more abundant sequences. The DADA2 naive Bayesian classifier was then used to compare sequence variants to the RDP v14 training set of classified sequences <span class="citation">(Cole et al., 2014)</span>. Through this process, each ASV column is assigned a full taxonomy, including Kingdom, Phylum, Class, Order, Family, and Genus.</p>
-<p>In addition to assigning taxonomies, we associated deidentified metadata to our stool samples, also provided to us by Memorial Sloan Kettering. The metadata were imported, cleaned, and subsetted to match our ASV table. Finally, the R “phyloseq” package was applied to combine our ASV feature table, our metadata, and our sequence taxonomies of our amplicon sequencing experiment into a single object <span class="citation">(McMurdie &amp; Holmes, 2013)</span>.</p>
-<p>With our full phyloseq object, we then used our assigned taxonomies as a filtering criterion on our data. This filtration process helps us to avoid spending unneeded time on taxa that are seen too infrequently and eliminates extra noise by deleting taxa that are simply artifacts of data collection.</p>
-<p>We created a table of read counts for each Phylum present in our dataset.</p>
+<p>The ASV table produced by Alex Sibley consisted of seven different batches of stool samples produced by MSK. Characteristic of the typical OTU sequence table, these distinct datasets were merged into a single ASV table, with columns representing different ASVs, rows representing samples, and counts in the table representing the abundance of each ASV in each of our samples.</p>
+<p>DADA2 was used to remove chimeric sequences from the sequence table by comparing each inferred sequence to others in the table, and removing those that could be reproduced by stitching together two more abundant sequences <span class="citation">(Callahan et al., 2016a)</span>. The DADA2 naive Bayesian classifier was then used to compare sequence variants to the Ribosomal Database Project (RDP) v14 training set of classified sequences <span class="citation">(Cole et al., 2014)</span>. Through this process, each ASV column was assigned a full taxonomy, including Kingdom, Phylum, Class, Order, Family, and Genus.</p>
+<p>In addition to assigning taxonomies, we associated de-identified metadata, also provided to us by Memorial Sloan Kettering, to our stool samples. The metadata were imported, cleaned, and subsetted to match our ASV table. Finally, the R “phyloseq” package was applied to combine our ASV feature table, our metadata, and the sequence taxonomies of our amplicon sequencing experiment into a single object <span class="citation">(McMurdie &amp; Holmes, 2013)</span>.</p>
+<p>With our full phyloseq object, we then used our assigned taxonomies as a filtering criterion on our data. This filtration process helped us to eliminate noise in our data by deleting taxa that were probably artifacts of data collection <span class="citation">(Callahan et al., 2016a)</span>. We created a table of read counts for each Phylum present in our dataset (Table 1).</p>
 <p>
 <table style="width:62%;">
 <caption>Correlation of Inheritance Factors for Parents and Child</caption>
@@ -115,7 +114,7 @@
 <tbody>
 <tr class="odd">
 <td align="center">Actinobacteria</td>
-<td align="center">3864</td>
+<td align="center"><span class="math inline">\(3.86*10^3\)</span></td>
 </tr>
 <tr class="even">
 <td align="center">Armatimonadetes</td>
@@ -123,7 +122,7 @@
 </tr>
 <tr class="odd">
 <td align="center">Bacteroidetes</td>
-<td align="center">3375</td>
+<td align="center"><span class="math inline">\(3.38*10^3\)</span></td>
 </tr>
 <tr class="even">
 <td align="center">Chlamydiae</td>
@@ -147,7 +146,7 @@
 </tr>
 <tr class="odd">
 <td align="center">Firmicutes</td>
-<td align="center">155578</td>
+<td align="center"><span class="math inline">\(1.56*10^5\)</span></td>
 </tr>
 <tr class="even">
 <td align="center">Fusobacteria</td>
@@ -155,7 +154,7 @@
 </tr>
 <tr class="odd">
 <td align="center">Proteobacteria</td>
-<td align="center">3481</td>
+<td align="center"><span class="math inline">\(3.48*10^3\)</span></td>
 </tr>
 <tr class="even">
 <td align="center">Spirochaetes</td>
@@ -171,28 +170,28 @@
 </tr>
 <tr class="odd">
 <td align="center">Verrumicrobia</td>
-<td align="center">8823</td>
+<td align="center"><span class="math inline">\(8.82*10^3\)</span></td>
 </tr>
 <tr class="even">
 <td align="center">Woesearchaeota</td>
-<td align="center">1578</td>
+<td align="center"><span class="math inline">\(1.58*10^3\)</span></td>
 </tr>
 <tr class="odd">
-<td align="center"><NA></td>
-<td align="center">211134</td>
+<td align="center">NA</td>
+<td align="center"><span class="math inline">\(2.11*10^5\)</span></td>
 </tr>
 </tbody>
 </table>
 </p>
-<p>Many of our features are annotated with a phylum of “NA,” potentially indicating that they are artifacts. However, due to the fact that databases such as the RDP are often far from complete, filtering out all of these datapoints was considered to be too stringent. As a result, they were kept in our dataset.</p>
-<p>We also explored feature prevalence in our dataset. Feature prevalence is defined to be the number of samples in which a taxum appears at least once. We computed the average and total prevalences of the features in each phylum to determine if there were any phyla that consisted mostly of low-prevalence features.</p>
+<p>Many of our features were annotated with a phylum of “NA,” potentially indicating that they are artifacts. However, due to the fact that databases such as the RDP are often far from complete, filtering out all of these data points was considered to be too stringent. As a result, they were kept in our dataset.</p>
+<p>We also explored feature prevalence in our data. Feature prevalence is defined to be the number of samples in which a taxon appears at least once <span class="citation">(Callahan et al., 2016a)</span>. We computed the average and total prevalences of the features in each phylum to determine if there were any phyla that consisted mostly of low-prevalence features (Table 2). Through this process, we dropped the following phyla from our dataset: Armatimonadetes, Chlamydiae, Deferribacteres, Deinococcus-Thermus, Spirochaetes, and Tenericutes.</p>
 <p>
-<table>
+<table style="width:94%;">
 <caption>Feature Prevalence of Phyla in our Dataset</caption>
 <colgroup>
-<col width="38%" />
+<col width="40%" />
 <col width="30%" />
-<col width="30%" />
+<col width="23%" />
 </colgroup>
 <thead>
 <tr class="header">
@@ -204,110 +203,107 @@
 <tbody>
 <tr class="odd">
 <td align="center">Actinobacteria</td>
-<td align="center">2.612319</td>
-<td align="center">10094</td>
+<td align="center">2.61</td>
+<td align="center"><span class="math inline">\(1.01*10^4\)</span></td>
 </tr>
 <tr class="even">
 <td align="center">Armatimonadetes</td>
-<td align="center">1.000000</td>
+<td align="center">1.00</td>
 <td align="center">1</td>
 </tr>
 <tr class="odd">
 <td align="center">Bacteroidetes</td>
-<td align="center">3.135111</td>
-<td align="center">10581</td>
+<td align="center">3.14</td>
+<td align="center"><span class="math inline">\(1.06*10^4\)</span></td>
 </tr>
 <tr class="even">
 <td align="center">Chlamydiae</td>
-<td align="center">1.000000</td>
+<td align="center">1.00</td>
 <td align="center">3</td>
 </tr>
 <tr class="odd">
 <td align="center">Cyanobacteria/Chloroplast</td>
-<td align="center">3.133333</td>
+<td align="center">3.13</td>
 <td align="center">47</td>
 </tr>
 <tr class="even">
 <td align="center">Deferribacteres</td>
-<td align="center">7.000000</td>
+<td align="center">7.00</td>
 <td align="center">7</td>
 </tr>
 <tr class="odd">
 <td align="center">Deinococcus-Thermus</td>
-<td align="center">2.333333</td>
+<td align="center">2.33</td>
 <td align="center">7</td>
 </tr>
 <tr class="even">
 <td align="center">Euryarchaeota</td>
-<td align="center">25.000000</td>
+<td align="center"><span class="math inline">\(2.50*10^{1}\)</span></td>
 <td align="center">50</td>
 </tr>
 <tr class="odd">
 <td align="center">Firmicutes</td>
-<td align="center">1.952770</td>
-<td align="center">303808</td>
+<td align="center">1.95</td>
+<td align="center"><span class="math inline">\(3.04*10^5\)</span></td>
 </tr>
 <tr class="even">
 <td align="center">Fusobacteria</td>
-<td align="center">4.473684</td>
+<td align="center">4.47</td>
 <td align="center">85</td>
 </tr>
 <tr class="odd">
 <td align="center">Proteobacteria</td>
-<td align="center">3.381212</td>
-<td align="center">11770</td>
+<td align="center">3.38</td>
+<td align="center"><span class="math inline">\(1.18*10^4\)</span></td>
 </tr>
 <tr class="even">
 <td align="center">Spirochaetes</td>
-<td align="center">1.500000</td>
-<td align="center">6</td>
+<td align="center">1.50</td>
+<td align="center">7</td>
 </tr>
 <tr class="odd">
 <td align="center">Synergistetes</td>
-<td align="center">1.880952</td>
-<td align="center">158</td>
+<td align="center">1.88</td>
+<td align="center"><span class="math inline">\(1.58*10^2\)</span></td>
 </tr>
 <tr class="even">
 <td align="center">Tenericutes</td>
-<td align="center">2.333333</td>
+<td align="center">2.33</td>
 <td align="center">7</td>
 </tr>
 <tr class="odd">
 <td align="center">Verrucomicrobia</td>
-<td align="center">1.706562</td>
-<td align="center">15057</td>
+<td align="center">1.71</td>
+<td align="center"><span class="math inline">\(1.51*10^4\)</span></td>
 </tr>
 <tr class="even">
 <td align="center">Woesearchaeota</td>
-<td align="center">3.147022</td>
-<td align="center">4966</td>
+<td align="center">3.15</td>
+<td align="center"><span class="math inline">\(4.97*10^3\)</span></td>
 </tr>
 <tr class="odd">
-<td align="center"><NA></td>
-<td align="center">1.977450</td>
-<td align="center">417507</td>
+<td align="center">NA</td>
+<td align="center">1.98</td>
+<td align="center"><span class="math inline">\(4.18*10^5\)</span></td>
 </tr>
 </tbody>
 </table>
 </p>
-<p>Through this process, we dropped the following phyla from our dataset: Armatimonadetes, Chlamydiae, Deferribacteres, Deinococcus-Thermus, Spirochaetes, and Tenericutes</p>
-<p>The previous filtration steps required our taxonomic annotations to properly work. Without taxonomies, we can use prevalence filtering as a form of unsupervised filtration to further streamline our data. We plotted graphs of prevalence against total abundance for each phylum in an effort to identify an appropriate prevalence threshold (Figure <a href="2-post-processing-and-filtration-of-the-sequence-table.html#fig:figure3">2.1</a>).</p>
+<p>The previous filtration steps all depended upon our taxonomic annotations. Ignoring taxonomies, we used prevalence filtering as a form of unsupervised filtration to further streamline our data. We plotted graphs of prevalence against total abundance for each phylum in an effort to identify an appropriate prevalence threshold (Figure <a href="2-post-processing-and-filtration-of-the-sequence-table.html#fig:figure3">2.1</a>)</p>
 <div class="figure" style="text-align: center"><span id="fig:figure3"></span>
 <img src="figure/figure3.png" alt="Feature Prevalence of Phyla against Total Abundance in our Dataset" width="700px" />
 <p class="caption">
 Figure 2.1: Feature Prevalence of Phyla against Total Abundance in our Dataset
 </p>
 </div>
-<p>We failed to see see any real separation in our plots, so we established an arbitrary prevalence threshold of 1%.</p>
-<p>In order to account for differences in library size, variance, and scale, we had to use relative abundances instead of total abundances. We transformed our data from counts to frequencies, and also applied a log transformation. We then applied Principal Coordinates Analysis (PCoA) with Bray-Curtis dissimilarity to our transformed data.</p>
-<p>We visualized ordination plots of the samples in our dataset, as well as of the distribution of taxa present in each sample (Figure <a href="2-post-processing-and-filtration-of-the-sequence-table.html#fig:figure4">2.2</a>).</p>
+<p>We failed to see see any real separation in our plots, so we established an arbitrary prevalence threshold of 1%. In order to account for differences in library size, variance, and scale, we had to use relative abundances instead of total abundances. We transformed our data from counts to frequencies, and also applied a log transformation. We then applied Principal Coordinates Analysis (PCoA) with Bray-Curtis dissimilarity to our transformed data. PCoA was used over Principal Components Analysis due to the fact that our data had so many features (ASVs) compared to samples. We visualized ordination plots of the samples in our dataset, as well as of the distribution of taxa present in each sample (Figure <a href="2-post-processing-and-filtration-of-the-sequence-table.html#fig:figure4">2.2</a>).</p>
 <div class="figure" style="text-align: center"><span id="fig:figure4"></span>
 <img src="figure/figure4.png" alt="Ordination Plots of Samples and of Phyla" width="700px" />
 <p class="caption">
 Figure 2.2: Ordination Plots of Samples and of Phyla
 </p>
 </div>
-<p>In addition to looking at the specific distribution of phyla for our samples, we can color-code the different datapoints representing each of our samples to determine if there are any obvious clustering patterns based upon the covariates in our metadata. In the following two plots, we visualize vital status and graft source for our patients across all time points (Figures <a href="2-post-processing-and-filtration-of-the-sequence-table.html#fig:figure5">2.3</a> and <a href="2-post-processing-and-filtration-of-the-sequence-table.html#fig:figure6">2.4</a>).</p>
+<p>In addition to looking at the specific distribution of phyla for our samples, we can color-code the different data points representing each of our samples to determine if there are any obvious clustering patterns based upon the covariates in our metadata. Figures <a href="2-post-processing-and-filtration-of-the-sequence-table.html#fig:figure5">2.3</a> and <a href="2-post-processing-and-filtration-of-the-sequence-table.html#fig:figure6">2.4</a> allow us to visualize trends in vital status and graft source for our patients across all time points.</p>
 <div class="figure" style="text-align: center"><span id="fig:figure5"></span>
 <img src="figure/figure5.png" alt="Ordination Plot of Samples, colored by Vital Status" width="700px" />
 <p class="caption">
@@ -320,16 +316,16 @@ Figure 2.3: Ordination Plot of Samples, colored by Vital Status
 Figure 2.4: Ordination Plot of Samples, colored by Graft Source
 </p>
 </div>
-<p>While these visualizations revealed some information into the distributions of bacteria in our samples, we failed to see any obvious trends across our categories. Another key issue with our plots is that we were unable to clearly identify how a single patient’s sample would change over time. To quantify the dynamics of a patient’s microbiome in our ordination plot, we devised two different summary statistics: maximum distance and last distance.</p>
-<p>We began by creating a Scree plot to determine the contributions of our different principal coordinate axes (Figure <a href="2-post-processing-and-filtration-of-the-sequence-table.html#fig:figure7">2.5</a>).</p>
+<p>A key issue with our plots is that we were unable to clearly identify how a single patient’s sample would change over time. To quantify the dynamics of a individual’s microbiome in our ordination plot, in consultation with Eric Monson of Duke’s Data and Visualization Services, we devised two different summary statistics: maximum distance and last distance.</p>
+<p>Given an ordination plot, “maximum distance” is defined to be the largest two-dimensional distance traveled from the initial state of the patient’s microbiome. “Last distance” is defined to be the distance between a patient’s last and first points in the ordination plot. Both of these values give us a way to quantify change in a patient’s microbiome. The higher the value of the maximum or last distance, the more different a individual’s microbial composition is from its original state. We began by creating a Scree plot to determine the contributions of our different principal coordinate axes to our ordination (Figure <a href="2-post-processing-and-filtration-of-the-sequence-table.html#fig:figure7">2.5</a>).</p>
 <div class="figure" style="text-align: center"><span id="fig:figure7"></span>
 <img src="figure/figure7.png" alt="Scree Plot of Contributions from PCoA Axes" width="700px" />
 <p class="caption">
 Figure 2.5: Scree Plot of Contributions from PCoA Axes
 </p>
 </div>
-<p>Analyzing the plot and computing the contributions of our axes, we see that the first 17 axes constitute the the majority of contributions from our 460 total axes. So, we used these axes as part of our distance metrics; we calculated the distance from one sample to another by taking the square root of the sum of the squared differences of each of our seventeen components.</p>
-<p>Given an individual patient in our dataset, maximum distance is defined as the furthest distance in the ordination plot traveled from the patient’s earliest point. Last distance is defined as the distance between the individual’s earliest and latest point in the ordination plot. A potential future avenue to explore in this scenario is to scale principal components relative to one another instead of simply using the first seventeen, in an effort to get a better quantification of our two metrics. With our processed dataset and ordination plot, and our new summary statistics, we turned to the visualization application “Tableau.”</p>
+<p>Analyzing the plot and computing the contributions of our axes, we saw that the first 17 axes constitute the the majority of contributions from our 460 total axes. So, we used these axes as part of our distance metrics; we calculated the distance from one sample to another by taking the square root of the sum of the squared differences of each of our seventeen components. A potential future avenue to explore in this scenario is to scale principal components relative to one another instead of simply using the first seventeen, in an effort to get a better quantification of our two metrics.</p>
+<p>While the use of ordination plots in ggplot revealed some information into the distributions of bacteria in our samples, we failed to see any obvious trends across our categories. In an effort to better understand the behavior of our data in relation to our new summary statistics, as well as over time, we turned to the visualization application “Tableau.”</p>
 
 </div>
             </section>

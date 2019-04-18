@@ -14,31 +14,31 @@ With our full phyloseq object, we then used our assigned taxonomies as a filteri
 ----------------------------- ---------------
   Actinobacteria                  $3.86*10^3$
   
-  Armatimonadetes                 1
+  Armatimonadetes                 $1$
   
   Bacteroidetes                   $3.38*10^3$
   
-  Chlamydiae                      3
+  Chlamydiae                      $3$
   
-  Cyanobacteria/Chloroplast       15
+  Cyanobacteria/Chloroplast       $15$
   
-  Deferribacteres                 1
+  Deferribacteres                 $1$
   
-  Deinococcus-Thermus             3
+  Deinococcus-Thermus             $3$
   
-  Euryarchaeota                   2
+  Euryarchaeota                   $2$
   
   Firmicutes                      $1.56*10^5$
   
-  Fusobacteria                    19
+  Fusobacteria                    $19$
   
   Proteobacteria                  $3.48*10^3$
   
-  Spirochaetes                    4
+  Spirochaetes                    $4$
   
-  Synergistetes                   84
+  Synergistetes                   $84$
   
-  Tenericutes                     3
+  Tenericutes                     $3$
   
   Verrumicrobia                   $8.82*10^3$
   
@@ -46,8 +46,7 @@ With our full phyloseq object, we then used our assigned taxonomies as a filteri
   
   NA                              $2.11*10^5$
 ----------------------------- ---------------
-Table: Correlation of Inheritance Factors for Parents and Child 
-
+Table: Table 1. Correlation of Inheritance Factors for Parents and Child 
 
 </p>
 
@@ -60,48 +59,45 @@ We also explored feature prevalence in our data. Feature prevalence is defined t
 --------------------------------------------------------------------
   Phylum                       Average Abundance    Total Abundance
 ---------------------------- --------------------- -----------------
-  Actinobacteria                  2.61                $1.01*10^4$
+  Actinobacteria                  $2.61$              $1.01*10^4$
   
-  Armatimonadetes                 1.00                1
+  Armatimonadetes                 $1.00$              $1$
   
-  Bacteroidetes                   3.14                $1.06*10^4$
+  Bacteroidetes                   $3.14$              $1.06*10^4$
   
-  Chlamydiae                      1.00                3
+  Chlamydiae                      $1.00$              $3$
   
-  Cyanobacteria/Chloroplast       3.13                47
+  Cyanobacteria/Chloroplast       $3.13$              $47$
   
-  Deferribacteres                 7.00                7
+  Deferribacteres                 $7.00$              $7$
   
-  Deinococcus-Thermus             2.33                7
+  Deinococcus-Thermus             $2.33$              $7$
   
-  Euryarchaeota                   $2.50*10^{1}$       50
+  Euryarchaeota                   $2.50*10^{1}$       $50$
   
-  Firmicutes                      1.95                $3.04*10^5$
+  Firmicutes                      $1.95$              $3.04*10^5$
   
-  Fusobacteria                    4.47                85
+  Fusobacteria                    $4.47$              $85$
   
-  Proteobacteria                  3.38                $1.18*10^4$
+  Proteobacteria                  $3.38$              $1.18*10^4$
   
-  Spirochaetes                    1.50                7
+  Spirochaetes                    $1.50$              $7$
   
-  Synergistetes                   1.88                $1.58*10^2$
+  Synergistetes                   $1.88$              $1.58*10^2$
   
-  Tenericutes                     2.33                7
+  Tenericutes                     $2.33$              $7$
   
-  Verrucomicrobia                 1.71                $1.51*10^4$
+  Verrucomicrobia                 $1.71$              $1.51*10^4$
   
-  Woesearchaeota                  3.15                $4.97*10^3$
+  Woesearchaeota                  $3.15$              $4.97*10^3$
   
-  NA                              1.98                $4.18*10^5$
+  NA                              $1.98$              $4.18*10^5$
 ---------------------------- --------------------- -----------------
-Table: Feature Prevalence of Phyla in our Dataset 
-
+Table: Table 2. Feature Prevalence of Phyla in our Dataset 
 
 </p>
 
-
 The previous filtration steps all depended upon our taxonomic annotations. Ignoring taxonomies, we used prevalence filtering as a form of unsupervised filtration to further streamline our data. We plotted graphs of prevalence against total abundance for each phylum in an effort to identify an appropriate prevalence threshold (Figure \@ref(fig:figure3))
-
 
 ```{r figure3, fig.cap="Feature Prevalence of Phyla against Total Abundance in our Dataset", out.width = "700px",echo=FALSE}
 include_graphics(path = "figure/figure3.png")

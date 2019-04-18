@@ -5,11 +5,11 @@
 
   <meta charset="UTF-8">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
-  <title>Chapter 5 Phylogenetic Tree Decomposition | Statistical Analysis of the Human Gut Microbiome</title>
-  <meta name="description" content="Chapter 5 Phylogenetic Tree Decomposition | Statistical Analysis of the Human Gut Microbiome">
+  <title>Chapter 5 Phylogenetic Tree Decomposition | Statistical Analysis of Gut Microbiome Data for Memorial Sloan Kettering Patients Recovering from Leukemia</title>
+  <meta name="description" content="Chapter 5 Phylogenetic Tree Decomposition | Statistical Analysis of Gut Microbiome Data for Memorial Sloan Kettering Patients Recovering from Leukemia">
   <meta name="generator" content="bookdown  and GitBook 2.6.7">
 
-  <meta property="og:title" content="Chapter 5 Phylogenetic Tree Decomposition | Statistical Analysis of the Human Gut Microbiome" />
+  <meta property="og:title" content="Chapter 5 Phylogenetic Tree Decomposition | Statistical Analysis of Gut Microbiome Data for Memorial Sloan Kettering Patients Recovering from Leukemia" />
   <meta property="og:type" content="book" />
   
   
@@ -17,7 +17,7 @@
   
 
   <meta name="twitter:card" content="summary" />
-  <meta name="twitter:title" content="Chapter 5 Phylogenetic Tree Decomposition | Statistical Analysis of the Human Gut Microbiome" />
+  <meta name="twitter:title" content="Chapter 5 Phylogenetic Tree Decomposition | Statistical Analysis of Gut Microbiome Data for Memorial Sloan Kettering Patients Recovering from Leukemia" />
   
   
   
@@ -84,7 +84,7 @@
       <div class="body-inner">
         <div class="book-header" role="navigation">
           <h1>
-            <i class="fa fa-circle-o-notch fa-spin"></i><a href="./">Statistical Analysis of the Human Gut Microbiome</a>
+            <i class="fa fa-circle-o-notch fa-spin"></i><a href="./">Statistical Analysis of Gut Microbiome Data for Memorial Sloan Kettering Patients Recovering from Leukemia</a>
           </h1>
         </div>
 
@@ -94,24 +94,24 @@
             <section class="normal" id="section-">
 <div id="phylogenetic-tree-decomposition" class="section level1">
 <h1><span class="header-section-number">Chapter 5</span> Phylogenetic Tree Decomposition</h1>
-<p>There are several aspects of microbiome data that make statistical analysis difficult. Potential issues include high dimensionality with large numbers of OTUs, sparsity due to small OTU counts, and potential correlations among counts of different OTUs. These aspects can cause problems when attempting to perform inference on the abundances of taxonomic units. Furthermore, simply analyzing regression results for a single OTU at a time fails to take into account the dependencies between different bacterial populations in the gut.</p>
-<p>To address these concerns, we applied a Phylogenetic Tree Decomposition to our microbiome data. This methodology replicates concepts introduced in PhyloScan <span class="citation">(Tang, Ma, &amp; Nicolae, 2018)</span> and DTM <span class="citation">(T. Wang &amp; Zhao, 2017)</span>. Using a phylogenetic tree can summarize the evolutionary relationships amongst the OTUs, allowing us to have a better context of their functional relationships and enriching the overall model fitting process.</p>
-<p>With our completed filtration of our samples, we constructed a phylogenetic tree to represent the relations between our samples. We used the DECIPHER package in R to first perform multiple-alignment on the sequences in our ASV sequence table <span class="citation">(Wright, 2016)</span>. We then used the R package “phangorn” to fit a UPGMA tree based upon our sequences <span class="citation">(Schliep, 2016)</span>.</p>
-<p>Our full tree was a binary tree with a single root node. There were a total of 11048 leaf nodes, and 11047 internal nodes. Our filtered ASV table has a total of 462 rows, each corresponding to a distinct sample. Each column in our ASV table represents a leaf in the phylogenetic tree. With these initial abundances for a given sample, we propagated our way up through the phylogenetic tree, determining the counts going left and right at each of our 11047 internal node. This process was repeated 462 times, once per sample. Figure <a href="5-phylogenetic-tree-decomposition.html#fig:figure15">5.1</a> provides a smaller example of the phylogenetic tree transformation process. The code to achieve this transformation was implemented in Python, and took roughly two weeks to finish running.</p>
+<p>There are several aspects of microbiome data that make statistical analysis difficult. Issues include high dimensionality with large numbers of OTUs, sparsity due to small OTU counts, and potential correlations among counts of different OTUs. These aspects can cause problems when attempting to perform inference on the abundances of taxonomic units. Furthermore, simply analyzing regression results one OTU at a time fails to take into account the dependencies across different bacterial populations in the gut.</p>
+<p>To address these concerns, we applied a “Phylogenetic Tree Decomposition” to our microbiome data. This methodology replicates concepts introduced in PhyloScan <span class="citation">(Tang, Ma, &amp; Nicolae, 2018)</span> and DTM <span class="citation">(T. Wang &amp; Zhao, 2017)</span>. Using a phylogenetic tree can summarize the evolutionary relationships amongst the OTUs, allowing us to have a better context of their functional relationships and enriching the overall model fitting process.</p>
+<p>With our completed filtration of our samples, we constructed a phylogenetic tree to represent the relations between our samples. We used the DECIPHER package in R to first perform multiple-alignment on the sequences in our ASV sequence table <span class="citation">(Wright, 2016)</span>. We then used the R package “phangorn” to fit a UPGMA tree based upon our sequences <span class="citation">(<span class="citeproc-not-found" data-reference-id="Schliep2018"><strong>???</strong></span>)</span>.</p>
+<p>Our full tree was a binary tree with a single root node. There were a total of 11048 leaf nodes, and 11047 internal nodes. Our filtered ASV table has a total of 462 rows, each corresponding to a distinct sample. Each of the 11048 columns in our ASV table represents a leaf in the phylogenetic tree. With the initial abundances for each sample, we propagated our way up through the phylogenetic tree, determining the counts going left and right at each of our 11047 internal nodes. This process was repeated 462 times, once per sample. Figure <a href="5-phylogenetic-tree-decomposition.html#fig:figure15">5.1</a> provides a smaller example of the phylogenetic tree decomposition process. The code to achieve this transformation was implemented in Python, and took roughly two weeks to finish running.</p>
 <div class="figure" style="text-align: center"><span id="fig:figure15"></span>
 <img src="figure/figure15.png" alt="An example of bottom-up propagation of abundance counts" width="700px" />
 <p class="caption">
 Figure 5.1: An example of bottom-up propagation of abundance counts
 </p>
 </div>
-<p>In addition to using calculating counts going left and right at each internal node, code was also written in Python to determine the taxonomic rankings of each internal node, based upon the assigned taxonomies from the RDP for each ASV column in the sequence table. Figure <a href="5-phylogenetic-tree-decomposition.html#fig:figure16">5.2</a> provides a smaller example of this propagation process.</p>
+<p>In addition to calculating counts going left and right at each internal node, code was also written in Python to determine the taxonomic rankings of each internal node, based upon the assigned taxonomies from the RDP for each ASV column in the sequence table. Figure <a href="5-phylogenetic-tree-decomposition.html#fig:figure16">5.2</a> provides a smaller example of this propagation process.</p>
 <div class="figure" style="text-align: center"><span id="fig:figure16"></span>
 <img src="figure/figure16.png" alt="An example of bottom-up propagation of Taxonomies" width="700px" />
 <p class="caption">
 Figure 5.2: An example of bottom-up propagation of Taxonomies
 </p>
 </div>
-<p>With calculated counts and taxonomies for each of the internal nodes of our phylogenetic tree, we then applied a logit mixed-effect binomial model to each one, using the “glmer” function of the R “lme4” package <span class="citation">(Bates, Machler, Bolker, &amp; Walker, 2015)</span>. At each node, we had 370 observations after filtration for missing values. There were a total of 129 different patients in our dataset. We incorporated a random effect for patient ID, and a nested random effect within patientID for sampleDate. We also included fixed effects for Batch number, transplant Age, gender, ethnicity, diagnosis, transplant type, graft source, vital status, care environment, presence of acute graft v. host disease, presence of chronic graft v. host disease, ANC500 level, and “preOrPost,” telling us if the first sample was taken before or after the transplant date.</p>
+<p>With calculated counts and taxonomies for each of the internal nodes of our phylogenetic tree, we then fit a logit mixed-effect binomial model to each node, using the “glmer” function of the R “lme4” package <span class="citation">(Bates, Machler, Bolker, &amp; Walker, 2015)</span>. At each node, we had 370 observations after filtration for missing values. There were a total of 129 different patients in our dataset. We incorporated a random effect for patient ID, and a nested random effect within patient ID for sample date. We also included fixed effects for batch number, transplant age, gender, ethnicity, diagnosis, transplant type, graft source, vital status, care environment, presence of acute graft versus host disease, presence of chronic graft versus host disease, number of days post transplant that the ANC value is greater than 500, and “preOrPost,” telling us if the first sample was taken before or after the transplant date.</p>
 <p>The general format of our mixed effects model is as follows:</p>
 <p><span class="math inline">\(logit(P_{i}(A)) = X_{i}\beta^{(A)} + \gamma_{i}^{(A)} + \epsilon_{it}^{(A)}\)</span></p>
 <p><span class="math inline">\(P_{i}(A)\)</span> is the probability of picking the left child of node A for sample <span class="math inline">\(i\)</span> at time <span class="math inline">\(t\)</span>.</p>
@@ -119,8 +119,8 @@ Figure 5.2: An example of bottom-up propagation of Taxonomies
 <p><span class="math inline">\(\epsilon_{i}^{(A)} = N(0, \sigma_{\epsilon}^{2})\)</span></p>
 <p><span class="math inline">\(for \ i = 1,...,370\)</span></p>
 <p>In most cases, the regression model would fail to converge and provide meaningful results. However, there were twenty-two different internal nodes for which our model finished running and identified different variables to be significant.</p>
-<p>Due to the fact that we had performed multiple tests, we applied a Bonferroni correction to our 22 nodes, requiring a p-value smaller than <span class="math inline">\(.05/22 = 2.27 * 10^{-3}.\)</span> We settled on Bonferroni correction over other approaches to handling the multiple testing process due to how few of our nodes yielded successful regressions. With a success rate of roughly 0.2%, Bonferroni correction helps us feel more certain that the variables we identify are significant. In the future, we may choose to consider other forms of False Discovery Rate-controlling procedures, which would be less severe but still sufficiently accurate.</p>
-<p>In addition to identifying several Batch effects, we found significant variables for five of our nodes, with three significant variables found for the root node of our tree, and a single significant variable found for each of the other nodes. Figure <a href="5-phylogenetic-tree-decomposition.html#fig:figure17">5.3</a> displays a table of the results of our phylogenetic tree decomposition, including the node number (higher numbers appear lower in the tree), the node taxonomy, the taxonomy of the children, the variable identified to be significant, and the estimate and p-values.</p>
+<p>Due to the fact that we had performed multiple tests, we applied a Bonferroni correction to our 22 nodes, requiring a p-value smaller than <span class="math inline">\(.05/22 = 2.27 * 10^{-3}.\)</span> We settled on Bonferroni correction over other approaches to handling the multiple testing process due to how few of our nodes yielded successful regressions. With a success rate of just roughly 0.2%, Bonferroni correction helps us feel more certain that the variables we identify are indeed significant. In the future, we may choose to consider other forms of False Discovery Rate-controlling procedures, which would be less severe but still sufficiently accurate.</p>
+<p>In addition to identifying several batch effects, we found significant variables for five of our nodes, with three significant variables found for the root node of our tree, and a single significant variable found for each of the other nodes. Figure <a href="5-phylogenetic-tree-decomposition.html#fig:figure17">5.3</a> provides a table of the results of our phylogenetic tree decomposition, including the node number (higher numbers appear lower in the tree), the node taxonomy, the taxonomy of the children, the variable identified to be significant, estimates, and p-values.</p>
 <div class="figure" style="text-align: center"><span id="fig:figure17"></span>
 <img src="figure/figure17.png" alt="Significant Results from Phylogenetic Tree Decomposition after Bonferroni Correction" width="700px" />
 <p class="caption">
@@ -129,7 +129,7 @@ Figure 5.3: Significant Results from Phylogenetic Tree Decomposition after Bonfe
 </div>
 <p>These results give us a bit of insight into the relationship between taxonomies and our covariates. For instance, interpreting the result for node 3541, we can say the following:</p>
 <p>At this node, for a given stool sample and patient, and holding all else constant, having chronic graft versus host disease changes the odds for an ASV in the sample to belong in the more refined Lactobacillus Family compared to the more general Lactobacillaceae Order by a multiplicative factor of roughly 3.06 (confidence interval of [1.64, 5.81]).</p>
-<p>Indeed, this output suggests a potential connection between CGVHD and microbiota in the lactobacillus family. We see that results for other nodes are a bit more difficult to interpret, because of the fact that parent and children have the same taxonomic classifications. Nevertheless, Phylogenetic Tree Decomposition offers a unique way to consider the effects of various covariates across different taxonomic levels. If we have varying taxonomies between the two children of a node, then being able to comprehend the odds of going left versus right given a certain value for a covariate will have greater meaning. If we are also able to analyze full chains of internal nodes within our tree, then we could better identify the distributions of counts across taxonomies.</p>
+<p>Indeed, this output suggests a potential connection between CGVHD and microbiota in the lactobacillus family. We see that results for other nodes are a bit more difficult to interpret, because of the fact that parents and children have the same taxonomic classifications. Nevertheless, Phylogenetic Tree Decomposition offers a unique way to consider the effects of various covariates across different taxonomic levels. If we have varying taxonomies between the two children of a node, then being able to comprehend the odds of going left versus right given a certain value for a covariate will have greater meaning. If we were also able to perform analysis on full chains of internal nodes, then we could better identify the exact distributions of ASV counts across taxonomic groupings.</p>
 
 </div>
             </section>
