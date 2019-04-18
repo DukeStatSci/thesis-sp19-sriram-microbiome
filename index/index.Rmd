@@ -26,7 +26,6 @@ abstract: |
 # like below, use a command like that for the abstract above.  Note that a tab is 
 # needed on the line after the |.
 acknowledgements: |
-  I would like to thank Li Ma for his guidance and support throughout this year. I would also like to thank Tony Sung and Alex Sibley of the Duke Cancer Institute, Eric Monson of the Duke Data and Visualization Services, and Fan Li, Alexander Volfovsky, Mine Cetinkaya-Rundel, and Amy Herring of the Duke Department of Statistical Science.
 #dedication: |
 #  You can have a dedication here if you wish. 
 preface: |
@@ -98,3 +97,7 @@ Anyone who needs to use data analysis, math, tables, a lot of figures, complex c
 # Abstract {.unnumbered}
 
 Human gut microbiome data from the Memorial Sloan Kettering Cancer Center was analyzed in an effort to characterize potential associations between patient traits and their gut bacterial compositions. The DADA2 pipeline was first applied to create an Amplicon Sequence Variant table based upon rRNA reads collected from stool samples of patients recovering from leukemia. Principal Coordinates Analysis was then applied to create ordination plots that represented the distribution of microbiome compositions. Interactive visualizations were developed in Tableau to visualize trends in the microbial dynamics of patients. Summary statistics to measure microbiome dynamics were also devised, and linear regressions were performed to identify potential traits related to changes in the microbiome over time. These analyses suggested a connection between microbiome movement and vital status and graft source. Finally, a phylogenetic tree decomposition was conducted to create a transformation of the bacterial abundance data that would provide contextual insight into connections between patient traits and their microbiomes. Through this process, we found that variables including care environment, the presence of chronic graft versus host disease, the number of days post transplant that the ANC is greater than 500, and graft source were all potentially significantly related to the composition of patient gut bacteria. Ultimately, our methodology shows much promise for the identification of associations between patient recovery from leukemia and their gut microbiomes.
+
+# Acknowledgements {-}
+I would like to give a huge thanks to my advisor Dr. Li Ma for his guidance and support throughout my project. I would also like to thank Dr. Tony Sung and Alex Sibley of the Duke Cancer Institute, Dr. Eric Monson of the Duke Data and Visualization Services, and Drs. Fan Li, Alexander Volfovsky, Mine Çetinkaya-Rundel, and Amy Herring of the Duke Department of Statistical Science for their help throughout this year.
+
